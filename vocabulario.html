@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 5: Interactive Study Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#fef3c7',
+                            DEFAULT: '#f59e0b',
+                            dark: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #fef8e7; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        .card-container.flipped .transform-style-3d { transform: rotateY(180deg); }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Chosen Palette: Warm Neutrals & Playful Accents (Amber/Yellow/Orange) -->
+    <!-- Application Structure Plan: The SPA is designed as an interactive "Flashcard Dashboard" tailored for an 8-year-old. It begins with a visual overview (Chart.js) to show the scope of study, reducing anxiety by chunking the vocabulary. The core is a filterable grid of interactive flip-cards. This structure shifts learning from passive reading to active recall (flipping cards) and categorical association (filters), which is the most effective way for children to memorize vocabulary. -->
+    <!-- Visualization & Content Choices: 1. Overview -> Goal: Show study scope -> Viz: Chart.js Doughnut Chart -> Interaction: Hover for exact numbers -> Justification: Helps the child understand how many words belong to each group. 2. Vocabulary Data -> Goal: Memorization -> Presentation: 3D Flip Cards with Emojis -> Interaction: Click to flip, click filters to sort -> Justification: Emojis provide instant visual association without needing external files (adhering to NO SVG/raster), and the physical act of "flipping" a digital card reinforces memory through active participation. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-extrabold text-brand-dark flex items-center gap-2">
+                <span>📚</span> Unit 5: English Explorer
+            </h1>
+            <div class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+                36 Palabras
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow w-full max-w-6xl mx-auto px-4 py-8 space-y-12">
+
+        <section class="bg-white rounded-3xl p-6 md:p-10 shadow-md border border-amber-100">
+            <h2 class="text-2xl font-bold mb-4 text-slate-700">Tu Misión de Aprendizaje 🚀</h2>
+            <p class="text-lg text-slate-600 mb-8">
+                Bienvenido a tu panel interactivo de estudio. Aquí encontrarás todo el vocabulario de la Unidad 5 sobre Insectos y el Mundo que nos rodea. El gráfico de abajo te muestra cómo están divididas tus nuevas palabras. ¡Usa este panel para saber en qué categoría eres un experto y cuál necesitas repasar más!
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center gap-8 bg-brand-light/30 p-6 rounded-2xl">
+                <div class="w-full md:w-1/2">
+                    <div class="chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 space-y-4">
+                    <h3 class="text-xl font-bold text-brand-dark">¿Cómo estudiar?</h3>
+                    <ul class="space-y-3 text-lg text-slate-700">
+                        <li class="flex items-start gap-3">
+                            <span class="text-2xl">👇</span>
+                            <span><strong>Paso 1:</strong> Selecciona una categoría en los botones de abajo.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-2xl">👀</span>
+                            <span><strong>Paso 2:</strong> Mira el emoji y la palabra en inglés. Trata de recordar qué significa.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-2xl">👆</span>
+                            <span><strong>Paso 3:</strong> ¡Haz clic en la tarjeta! Se dará la vuelta y te mostrará la respuesta en español.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-slate-800 mb-4">Tarjetas de Memoria Mágicas ✨</h2>
+                <p class="text-lg text-slate-600">Haz clic en los botones para filtrar las palabras. Haz clic en las tarjetas para ver la traducción.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3 mb-10" id="filter-container">
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="flashcard-container">
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white py-8 text-center text-slate-500 font-semibold mt-12 border-t border-slate-200">
+        <p>¡Tú puedes lograrlo! Sigue practicando todos los días. 🌟</p>
+    </footer>
+
+    <script>
+        const vocabData = [
+            { id: 1, en: "Ladybug", es: "Mariquita", cat: "Insectos", icon: "🐞" },
+            { id: 2, en: "Cricket", es: "Grillo", cat: "Insectos", icon: "🦗" },
+            { id: 3, en: "Grasshopper", es: "Saltamontes", cat: "Insectos", icon: "🦗" },
+            { id: 4, en: "Beetle", es: "Escarabajo", cat: "Insectos", icon: "🪲" },
+            { id: 5, en: "Katydid", es: "Esperanza", cat: "Insectos", icon: "🍃" },
+            { id: 6, en: "Bee", es: "Abeja", cat: "Insectos", icon: "🐝" },
+            { id: 7, en: "Butterfly", es: "Mariposa", cat: "Insectos", icon: "🦋" },
+            { id: 8, en: "Kangaroo", es: "Canguro", cat: "Insectos", icon: "🦘" },
+            { id: 9, en: "Turtle", es: "Tortuga", cat: "Insectos", icon: "🐢" },
+
+            { id: 10, en: "Colorful", es: "Colorido", cat: "Adjetivos", icon: "🌈" },
+            { id: 11, en: "Beautiful", es: "Hermoso", cat: "Adjetivos", icon: "✨" },
+            { id: 12, en: "Quick", es: "Rápido", cat: "Adjetivos", icon: "⚡" },
+            { id: 13, en: "Noisy", es: "Ruidoso", cat: "Adjetivos", icon: "🔊" },
+            { id: 14, en: "Ugly", es: "Feo", cat: "Adjetivos", icon: "🧟" },
+            { id: 15, en: "Large / Big", es: "Grande", cat: "Adjetivos", icon: "🐘" },
+            { id: 16, en: "Little / Tiny", es: "Pequeño", cat: "Adjetivos", icon: "🐁" },
+            { id: 17, en: "Colors", es: "Colores", cat: "Adjetivos", icon: "🎨" },
+
+            { id: 18, en: "Staple", es: "Grapa", cat: "Terminación -le", icon: "🖇️" },
+            { id: 19, en: "Single", es: "Único / Solo", cat: "Terminación -le", icon: "1️⃣" },
+            { id: 20, en: "Article", es: "Artículo", cat: "Terminación -le", icon: "📰" },
+            { id: 21, en: "Handle", es: "Mango / Asa", cat: "Terminación -le", icon: "🚪" },
+            { id: 22, en: "Gentle", es: "Suave / Gentil", cat: "Terminación -le", icon: "🧸" },
+            { id: 23, en: "Bubble", es: "Burbuja", cat: "Terminación -le", icon: "🫧" },
+
+            { id: 24, en: "Fly", es: "Volar", cat: "Verbos", icon: "🕊️" },
+            { id: 25, en: "Hop / Jump", es: "Saltar", cat: "Verbos", icon: "🦘" },
+            { id: 26, en: "Make noise", es: "Hacer ruido", cat: "Verbos", icon: "🥁" },
+            { id: 27, en: "Sit", es: "Sentarse", cat: "Verbos", icon: "🪑" },
+            { id: 28, en: "Sleep", es: "Dormir", cat: "Verbos", icon: "😴" },
+            { id: 29, en: "Write / Read", es: "Escribir / Leer", cat: "Verbos", icon: "📖" },
+            { id: 30, en: "Play / Sing", es: "Jugar / Cantar", cat: "Verbos", icon: "🎤" },
+            { id: 31, en: "Buzz", es: "Zumbar", cat: "Verbos", icon: "🐝" },
+
+            { id: 32, en: "Thicket", es: "Matorral", cat: "Naturaleza", icon: "🌿" },
+            { id: 33, en: "Raisin", es: "Pasa", cat: "Naturaleza", icon: "🍇" },
+            { id: 34, en: "Poem / Poet", es: "Poema / Poeta", cat: "Naturaleza", icon: "✍️" },
+            { id: 35, en: "Grass", es: "Césped", cat: "Naturaleza", icon: "🌱" },
+            { id: 36, en: "Breeze", es: "Brisa", cat: "Naturaleza", icon: "🌬️" }
+        ];
+
+        const categories = ["Todas", "Insectos", "Adjetivos", "Terminación -le", "Verbos", "Naturaleza"];
+        const categoryColors = {
+            "Insectos": "#10b981", 
+            "Adjetivos": "#f59e0b", 
+            "Terminación -le": "#8b5cf6", 
+            "Verbos": "#ef4444", 
+            "Naturaleza": "#3b82f6" 
+        };
+
+        let currentFilter = "Todas";
+
+        function renderFilters() {
+            const container = document.getElementById('filter-container');
+            container.innerHTML = '';
+            
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                const isSelected = currentFilter === cat;
+                
+                btn.className = `px-5 py-2 rounded-full font-bold text-sm md:text-base transition-all duration-200 transform hover:scale-105 ${
+                    isSelected 
+                    ? 'bg-brand-dark text-white shadow-lg' 
+                    : 'bg-white text-slate-600 hover:bg-brand-light border border-slate-200 shadow-sm'
+                }`;
+                btn.textContent = cat;
+                
+                btn.addEventListener('click', () => {
+                    currentFilter = cat;
+                    renderFilters();
+                    renderCards();
+                });
+                
+                container.appendChild(btn);
+            });
+        }
+
+        function renderCards() {
+            const container = document.getElementById('flashcard-container');
+            container.innerHTML = '';
+            
+            const filteredData = currentFilter === "Todas" 
+                ? vocabData 
+                : vocabData.filter(item => item.cat === currentFilter);
+
+            filteredData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card-container h-48 perspective-1000 cursor-pointer w-full';
+                
+                const catColor = categoryColors[item.cat];
+
+                card.innerHTML = `
+                    <div class="relative w-full h-full transform-style-3d shadow-md hover:shadow-xl rounded-2xl">
+                        <div class="absolute w-full h-full backface-hidden bg-white rounded-2xl flex flex-col items-center justify-center border-2 border-b-4" style="border-color: ${catColor}20; border-bottom-color: ${catColor}40;">
+                            <span class="text-5xl mb-3 drop-shadow-sm">${item.icon}</span>
+                            <span class="text-xl font-extrabold text-slate-800 text-center px-2 leading-tight">${item.en}</span>
+                            <span class="text-xs font-bold uppercase mt-2 px-2 py-1 rounded-full text-white" style="background-color: ${catColor}">${item.cat}</span>
+                        </div>
+                        <div class="absolute w-full h-full backface-hidden rotate-y-180 rounded-2xl flex flex-col items-center justify-center border-2" style="background-color: ${catColor}; border-color: ${catColor};">
+                            <span class="text-2xl font-extrabold text-white text-center px-4 leading-snug drop-shadow-md">${item.es}</span>
+                            <span class="text-white/80 text-sm mt-4 italic">¡Bien hecho! 🌟</span>
+                        </div>
+                    </div>
+                `;
+
+                card.addEventListener('click', function() {
+                    this.classList.toggle('flipped');
+                });
+
+                container.appendChild(card);
+            });
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('categoryChart').getContext('2d');
+            
+            const catCounts = {
+                "Insectos": vocabData.filter(w => w.cat === "Insectos").length,
+                "Adjetivos": vocabData.filter(w => w.cat === "Adjetivos").length,
+                "Terminación -le": vocabData.filter(w => w.cat === "Terminación -le").length,
+                "Verbos": vocabData.filter(w => w.cat === "Verbos").length,
+                "Naturaleza": vocabData.filter(w => w.cat === "Naturaleza").length
+            };
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(catCounts),
+                    datasets: [{
+                        data: Object.values(catCounts),
+                        backgroundColor: [
+                            categoryColors["Insectos"],
+                            categoryColors["Adjetivos"],
+                            categoryColors["Terminación -le"],
+                            categoryColors["Verbos"],
+                            categoryColors["Naturaleza"]
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                font: { family: 'Nunito', size: 14, weight: 'bold' },
+                                color: '#475569',
+                                usePointStyle: true,
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleFont: { family: 'Nunito', size: 14 },
+                            bodyFont: { family: 'Nunito', size: 14, weight: 'bold' },
+                            padding: 12,
+                            cornerRadius: 8,
+                            callbacks: {
+                                label: function(context) {
+                                    return ` ${context.label}: ${context.raw} palabras`;
+                                }
+                            }
+                        }
+                    },
+                    cutout: '65%'
+                }
+            });
+        }
+
+        renderFilters();
+        renderCards();
+        initChart();
+
+    </script>
+</body>
+</html>

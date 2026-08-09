@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia: English Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Nunito', 'sans-serif'] },
+                    colors: {
+                        brand: { light: '#e0f2fe', DEFAULT: '#0ea5e9', dark: '#0284c7' }, // Tonos azules amigables
+                        success: { DEFAULT: '#22c55e', light: '#dcfce7' }, // Verde para aciertos
+                        error: { DEFAULT: '#ef4444', light: '#fee2e2' } // Rojo para errores
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #f0f9ff; }
+        
+        .option-btn {
+            transition: all 0.2s ease-in-out;
+            transform: scale(1);
+        }
+        .option-btn:hover:not(:disabled) {
+            transform: scale(1.02) translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .option-btn:active:not(:disabled) {
+            transform: scale(0.98);
+        }
+        
+        /* Estilos para botones bloqueados */
+        .option-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background-color: #f8fafc;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        
+        /* Animaciones para respuestas */
+        .correct-answer {
+            background-color: #22c55e !important;
+            border-color: #16a34a !important;
+            color: white !important;
+            animation: pulse-green 0.5s ease-in-out;
+        }
+        .wrong-answer {
+            background-color: #ef4444 !important;
+            border-color: #dc2626 !important;
+            color: white !important;
+            animation: shake-red 0.4s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        
+        @keyframes pulse-green {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes shake-red {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        /* Modal Animación */
+        .modal-enter { animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(250, 204, 21, 0.6), 0 0 40px rgba(250, 204, 21, 0.4);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col items-center py-6 px-4">
+
+    <!-- Application Structure Plan: A Quiz/Trivia style layout designed for active recall. The screen is split (stack on mobile, side-by-side on desktop). Left side shows the target English word prominently like a flashcard. Right side provides 3 multiple-choice options in Spanish. This structure builds reading comprehension and process of elimination skills. -->
+    <!-- Visualization & Content Choices: Target Word -> Goal: Prompt recall -> Presentation: Large, colorful card with Emoji -> Options -> Goal: Evaluate understanding -> Presentation: Large touch-friendly buttons -> Interaction: Click. Green pulse + auto-advance on correct, red shake on incorrect. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. Emojis used for visual aid. -->
+
+    <header class="text-center mb-6 w-full max-w-4xl">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-brand-dark mb-2">¡Misión Trivia! 🚀</h1>
+        <p class="text-lg text-slate-600 mb-4">¿Qué significa esta palabra? Elige la respuesta correcta.</p>
+        
+        <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
+            <div class="text-xl font-bold text-slate-700">
+                Puntos: <span id="score" class="text-brand-dark text-2xl">0</span> / <span id="total-words">55</span>
+            </div>
+            <!-- Barra de progreso -->
+            <div class="hidden sm:block flex-grow mx-8 bg-slate-100 rounded-full h-4 overflow-hidden">
+                <div id="progress-bar" class="bg-brand h-full transition-all duration-300" style="width: 0%;"></div>
+            </div>
+            <button onclick="initGame()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl font-bold transition-colors">
+                🔄 Reiniciar
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full max-w-4xl flex-grow flex flex-col md:flex-row gap-6 items-stretch justify-center">
+        
+        <!-- Zona Izquierda: Tarjeta Principal (Inglés) -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center">
+            <div class="bg-white border-4 border-brand-light rounded-3xl p-8 md:p-12 shadow-lg flex flex-col items-center justify-center min-h-[300px] text-center transform transition-all duration-200 cursor-pointer hover:scale-105 hover:border-brand hover:shadow-xl relative group" id="target-card" onclick="playCurrentWordAudio()" title="Haz clic para escuchar la pronunciación">
+                <div class="absolute top-4 right-4 text-3xl opacity-40 group-hover:opacity-100 transition-opacity group-hover:animate-bounce">🔊</div>
+                <span id="target-emoji" class="text-6xl md:text-8xl mb-4 drop-shadow-sm">🤔</span>
+                <h2 id="target-word" class="text-3xl md:text-5xl font-black text-brand-dark break-words w-full">Cargando...</h2>
+                <div class="mt-6 text-sm font-bold text-brand uppercase tracking-wider bg-brand-light px-3 py-1 rounded-full" id="target-category">Categoría</div>
+                <p id="instruction-text" class="mt-4 text-sm font-bold text-slate-400 group-hover:text-brand transition-colors">👆 Toca la tarjeta para escuchar y desbloquear</p>
+            </div>
+        </div>
+
+        <!-- Zona Derecha: Opciones (Español) -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center gap-4" id="options-container">
+            <!-- Los botones se inyectan aquí con JS -->
+        </div>
+
+    </main>
+
+    <!-- Modal de Victoria (Reutilizando la IA) -->
+    <div id="win-modal" class="fixed inset-0 bg-slate-900/80 hidden flex-col items-center justify-center z-50 p-4">
+        <div class="modal-enter text-center flex flex-col items-center max-w-2xl w-full bg-white rounded-3xl p-8 md:p-12 shadow-2xl relative">
+            
+            <h2 class="text-5xl md:text-7xl font-black text-yellow-400 mb-6 text-glow tracking-wide uppercase" style="-webkit-text-stroke: 2px #b45309;">
+                ¡Excelente!
+            </h2>
+            
+            <p class="text-xl text-slate-600 font-bold mb-8">¡Completaste todas las palabras como un campeón!</p>
+
+            <div class="w-full bg-blue-50 rounded-2xl p-6 mb-8 border-2 border-blue-200">
+                <h3 class="text-lg font-bold text-blue-800 mb-3">🎁 Premio Especial de Inteligencia Artificial</h3>
+                <p class="text-sm text-blue-700 mb-4">Pídele al robot que invente una historia cortita con algunas de las palabras que aprendiste.</p>
+                <button id="btn-gemini" onclick="generateGeminiStory()" class="bg-gradient-to-r from-blue-400 to-brand hover:from-blue-500 hover:to-brand-dark text-white px-6 py-3 rounded-full font-bold text-lg shadow-md transition-transform transform hover:scale-105 flex items-center gap-2 mx-auto">
+                    <span>✨</span> ¡Crear cuento mágico!
+                </button>
+                
+                <div id="gemini-output" class="mt-6 text-xl font-bold text-slate-800 hidden bg-white p-4 rounded-xl shadow-inner min-h-[80px] flex items-center justify-center text-center">
+                </div>
+            </div>
+
+            <button onclick="initGame()" class="bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-2xl font-black text-xl shadow-lg transition-colors w-full md:w-auto">
+                Jugar de nuevo ▶️
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Lista completa de vocabulario con emojis aislados para mostrarlos grandes
+        const fullVocabList = [
+            // --- Eventos y Celebraciones (Events) ---
+            { id: 1, en: "wedding", es: "boda", icon: "💒", cat: "Eventos" },
+            { id: 2, en: "festival", es: "festival", icon: "🎪", cat: "Eventos" },
+            { id: 3, en: "family reunion", es: "reunión familiar", icon: "👨‍👩‍👧‍👦", cat: "Eventos" },
+            { id: 4, en: "fair", es: "feria", icon: "🎡", cat: "Eventos" },
+            { id: 5, en: "folk dance", es: "baile folclórico", icon: "💃", cat: "Eventos" },
+
+            // --- Deportes y Competencias (Sports) ---
+            { id: 6, en: "race", es: "carrera", icon: "🏃", cat: "Deportes" },
+            { id: 7, en: "athlete", es: "atleta", icon: "🏅", cat: "Deportes" },
+            { id: 8, en: "player", es: "jugador", icon: "⚽", cat: "Deportes" },
+            { id: 9, en: "team", es: "equipo", icon: "🤝", cat: "Deportes" },
+            { id: 10, en: "winner", es: "ganador", icon: "🏆", cat: "Deportes" },
+            { id: 11, en: "game", es: "partido / juego", icon: "🏟️", cat: "Deportes" },
+            { id: 12, en: "home", es: "local (equipo)", icon: "🏠", cat: "Deportes" },
+            { id: 13, en: "visitor", es: "visitante (equipo)", icon: "🧳", cat: "Deportes" },
+
+            // --- Adjetivos: Cómo nos sentimos (-ed) ---
+            { id: 14, en: "surprised", es: "sorprendido", icon: "😲", cat: "Sentimientos (-ed)" },
+            { id: 15, en: "amazed", es: "asombrado", icon: "🤩", cat: "Sentimientos (-ed)" },
+            { id: 16, en: "tired", es: "cansado", icon: "😫", cat: "Sentimientos (-ed)" },
+            { id: 17, en: "excited", es: "emocionado", icon: "😄", cat: "Sentimientos (-ed)" },
+            { id: 18, en: "bored", es: "aburrido (sintiendo aburrimiento)", icon: "🥱", cat: "Sentimientos (-ed)" },
+            { id: 19, en: "interested", es: "interesado", icon: "🤔", cat: "Sentimientos (-ed)" },
+            { id: 20, en: "sleepy", es: "soñoliento", icon: "😴", cat: "Sentimientos (-ed)" },
+
+            // --- Adjetivos: Describiendo cosas (-ing) ---
+            { id: 21, en: "surprising", es: "sorprendente", icon: "🎁", cat: "Descripciones (-ing)" },
+            { id: 22, en: "amazing", es: "asombroso", icon: "✨", cat: "Descripciones (-ing)" },
+            { id: 23, en: "tiring", es: "agotador", icon: "🧗", cat: "Descripciones (-ing)" },
+            { id: 24, en: "exciting", es: "emocionante", icon: "🎢", cat: "Descripciones (-ing)" },
+            { id: 25, en: "boring", es: "aburrido (algo que aburre)", icon: "📉", cat: "Descripciones (-ing)" },
+            { id: 26, en: "interesting", es: "interesante", icon: "📚", cat: "Descripciones (-ing)" }
+        ];
+
+        let remainingWords = [];
+        let currentTarget = null;
+        let score = 0;
+        let isWaitingForNext = false; // Previene múltiples clics rápidos
+
+        // Elementos DOM
+        const elScore = document.getElementById('score');
+        const elTotal = document.getElementById('total-words');
+        const elProgressBar = document.getElementById('progress-bar');
+        const elTargetEmoji = document.getElementById('target-emoji');
+        const elTargetWord = document.getElementById('target-word');
+        const elTargetCat = document.getElementById('target-category');
+        const optionsContainer = document.getElementById('options-container');
+        const winModal = document.getElementById('win-modal');
+
+        // Utilidad: Barajar
+        function shuffleArray(array) {
+            let newArr = [...array];
+            for (let i = newArr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+            }
+            return newArr;
+        }
+
+        // Iniciar
+        function initGame() {
+            winModal.classList.add('hidden');
+            winModal.classList.remove('flex');
+            
+            remainingWords = shuffleArray(fullVocabList);
+            score = 0;
+            isWaitingForNext = false;
+            
+            elTotal.innerText = fullVocabList.length;
+            updateScoreUI();
+            
+            // Reset IA state
+            document.getElementById('gemini-output').innerHTML = '';
+            document.getElementById('gemini-output').classList.add('hidden');
+            document.getElementById('btn-gemini').disabled = false;
+            document.getElementById('btn-gemini').classList.remove('opacity-50', 'cursor-not-allowed');
+
+            loadNextQuestion();
+        }
+
+        function updateScoreUI() {
+            elScore.innerText = score;
+            const percentage = (score / fullVocabList.length) * 100;
+            elProgressBar.style.width = `${percentage}%`;
+        }
+
+        function loadNextQuestion() {
+            if (remainingWords.length === 0) {
+                // Ganó el juego
+                setTimeout(() => {
+                    winModal.classList.remove('hidden');
+                    winModal.classList.add('flex');
+                }, 500);
+                return;
+            }
+
+            // Tomar la siguiente palabra
+            currentTarget = remainingWords.pop();
+
+            // Actualizar Tarjeta Izquierda
+            elTargetEmoji.innerText = currentTarget.icon;
+            elTargetWord.innerText = currentTarget.en;
+            elTargetCat.innerText = currentTarget.cat;
+
+            // Reiniciar el texto de instrucción
+            const instructionEl = document.getElementById('instruction-text');
+            if(instructionEl) instructionEl.innerText = "👆 Toca la tarjeta para escuchar y desbloquear";
+
+            // Generar Opciones
+            generateOptions(currentTarget);
+            isWaitingForNext = false;
+        }
+
+        function generateOptions(correctWord) {
+            let options = [correctWord]; // Siempre incluye la correcta
+
+            // Buscar 2 incorrectas aleatorias
+            let possibleDistractors = fullVocabList.filter(w => w.id !== correctWord.id);
+            possibleDistractors = shuffleArray(possibleDistractors);
+            
+            options.push(possibleDistractors[0]);
+            options.push(possibleDistractors[1]);
+
+            // Mezclar las 3 opciones
+            options = shuffleArray(options);
+
+            // Renderizar botones
+            optionsContainer.innerHTML = '';
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn w-full bg-white border-2 border-slate-200 text-slate-700 font-bold text-xl md:text-2xl p-6 rounded-2xl shadow-sm hover:bg-slate-50 hover:border-brand flex justify-center items-center text-center';
+                // Si la palabra es muy larga, reducir el texto un poco
+                if(opt.es.length > 20) btn.classList.add('text-lg', 'md:text-xl');
+                
+                btn.innerText = opt.es;
+                btn.disabled = true; // Bloqueamos el botón desde el inicio
+                btn.onclick = () => handleAnswer(opt, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(selectedOption, buttonElement) {
+            if (isWaitingForNext) return; // Evitar spam de clics
+            isWaitingForNext = true;
+
+            const allButtons = optionsContainer.querySelectorAll('button');
+            
+            if (selectedOption.id === currentTarget.id) {
+                // Respuesta Correcta!
+                buttonElement.classList.add('correct-answer');
+                score++;
+                updateScoreUI();
+                
+                // Deshabilitar botones temporalmente
+                allButtons.forEach(b => b.disabled = true);
+
+                setTimeout(() => {
+                    loadNextQuestion();
+                }, 1000); // 1 segundo para disfrutar el verde y pasar a la siguiente
+            } else {
+                // Respuesta Incorrecta
+                buttonElement.classList.add('wrong-answer');
+                
+                // Le quitamos la animación después de un ratito para que pueda volver a intentar
+                setTimeout(() => {
+                    buttonElement.classList.remove('wrong-answer');
+                    isWaitingForNext = false; // Permitir que intente de nuevo con las otras opciones
+                }, 600);
+            }
+        }
+
+        // --- LÓGICA PARA EL AUDIO (Mejorada con Google Translate TTS) ---
+        function playCurrentWordAudio() {
+            if (!currentTarget) return;
+            
+            // Limpiamos el texto por si tiene barras (ej: "hop / jump") para que lo lea más natural como "hop or jump"
+            let textToSpeak = currentTarget.en.replace(/\//g, " or ");
+            
+            // Usamos el servicio de Google Translate para obtener una voz humana y natural
+            const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=${encodeURIComponent(textToSpeak)}`;
+            
+            // Pausar si hay un audio sonando actualmente
+            if (window.currentAudio) {
+                window.currentAudio.pause();
+            }
+            
+            window.currentAudio = new Audio(url);
+            
+            // Reproducir. Si por alguna razón falla la conexión, usa la voz del sistema como plan B
+            window.currentAudio.play().catch(e => {
+                console.log("Conexión a Google falló, usando voz del sistema...", e);
+                const utterance = new SpeechSynthesisUtterance(textToSpeak);
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            });
+            
+            // DESBLOQUEAR OPCIONES AL ESCUCHAR
+            if (!isWaitingForNext) {
+                const allButtons = optionsContainer.querySelectorAll('button');
+                allButtons.forEach(b => b.disabled = false);
+                const instructionEl = document.getElementById('instruction-text');
+                if(instructionEl) instructionEl.innerText = "¡Ahora elige la respuesta correcta!";
+            }
+            
+            // Pequeña animación visual al hacer clic en la tarjeta
+            const card = document.getElementById('target-card');
+            card.classList.add('scale-95');
+            setTimeout(() => card.classList.remove('scale-95'), 150);
+        }
+
+        // --- LÓGICA DE GEMINI API ---
+        async function generateGeminiStory() {
+            const btn = document.getElementById('btn-gemini');
+            const outputBox = document.getElementById('gemini-output');
+            
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            outputBox.classList.remove('hidden');
+            outputBox.innerHTML = '<span class="animate-pulse">Imaginando una historia genial... 🤖💭</span>';
+
+            // Elegir 3 palabras aleatorias de todo el vocabulario
+            const randomWords = shuffleArray([...fullVocabList]).slice(0, 3);
+            const wordsText = randomWords.map(w => `${w.es} (${w.en})`).join(', ');
+
+            const promptText = `Escribe un minicuento (máximo 30 palabras) muy creativo, gracioso y fácil de entender para un niño de 8 años. El cuento DEBE incluir estas 3 cosas: ${wordsText}. Usa emojis para que sea divertido.`;
+
+            const apiKey = ""; // El entorno provee la clave
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{ parts: [{ text: promptText }] }],
+                systemInstruction: { parts: [{ text: "Eres un cuentacuentos infantil muy alegre. Responde en español." }] }
+            };
+
+            let retries = 5;
+            let delay = 1000;
+
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    
+                    const data = await response.json();
+                    const aiText = data.candidates[0].content.parts[0].text;
+                    outputBox.innerHTML = aiText;
+                    return;
+
+                } catch (error) {
+                    if (i === retries - 1) {
+                        outputBox.innerHTML = '<span class="text-red-500">Uy, el robot se quedó sin batería. ¡Inténtalo de nuevo más tarde! 🔋</span>';
+                    } else {
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2;
+                    }
+                }
+            }
+        }
+
+        // Iniciar al cargar
+        window.onload = initGame;
+    </script>
+</body>
+</html>

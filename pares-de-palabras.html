@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Parejas: English Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Nunito', 'sans-serif'] },
+                    colors: {
+                        brand: { light: '#fef3c7', DEFAULT: '#f59e0b', dark: '#d97706' },
+                        match: { light: 'rgba(187, 247, 208, 0.8)' }, // Verde claro translúcido
+                        error: { DEFAULT: '#f87171' } // Rojo para error
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #fef8e7; }
+        .card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .card.selected {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            border-color: #f59e0b;
+            background-color: #fef3c7;
+        }
+        .card.matched {
+            background-color: rgba(187, 247, 208, 0.8); /* Verde claro translúcido */
+            border-color: #4ade80;
+            color: #166534;
+            pointer-events: none;
+            transform: scale(0.95);
+        }
+        .card.error {
+            background-color: #f87171; /* Rojo */
+            border-color: #ef4444;
+            color: white;
+            animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+        /* Modal Animation */
+        .modal-enter { animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(250, 204, 21, 0.6), 0 0 40px rgba(250, 204, 21, 0.4);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col items-center py-8 px-4">
+
+    <!-- Application Structure Plan: A grid-based matching game. Uses Vanilla JS for state management (tracking flipped cards, matching logic). Tailwind for responsive grid and visual states (selected, matched, error). Integrates Gemini API as a reward mechanism at the end of the game to generate a creative sentence using the words the child just learned, reinforcing vocabulary contextually. -->
+    <!-- Visualization & Content Choices: Word Cards -> Goal: Match EN-ES pairs -> Interaction: Click to select. Visual feedback (green translucent for correct, red shake for wrong) -> Justification: Immediate visual feedback is crucial for 8-year-olds to correct mistakes without frustration. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <header class="text-center mb-8 w-full max-w-6xl">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-brand-dark mb-2">¡Encuentra la Pareja! 🧩</h1>
+        <p class="text-lg text-slate-600 mb-4">Une la palabra en inglés con su significado en español.</p>
+        
+        <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
+            <div class="text-xl font-bold text-slate-700">
+                Parejas: <span id="score" class="text-brand-dark">0</span> / <span id="total-pairs">36</span>
+            </div>
+            <button onclick="initGame()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl font-bold transition-colors">
+                🔄 Mezclar cartas
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full max-w-6xl flex-grow">
+        <!-- Tablero del Juego -->
+        <div id="game-board" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 md:gap-3">
+            <!-- Las cartas se inyectarán aquí vía JS -->
+        </div>
+    </main>
+
+    <!-- Modal de Victoria -->
+    <div id="win-modal" class="fixed inset-0 bg-slate-900/80 hidden flex-col items-center justify-center z-50 p-4">
+        <div class="modal-enter text-center flex flex-col items-center max-w-2xl w-full bg-white rounded-3xl p-8 md:p-12 shadow-2xl relative">
+            
+            <h2 class="text-5xl md:text-7xl font-black text-yellow-400 mb-6 text-glow tracking-wide uppercase" style="-webkit-text-stroke: 2px #b45309;">
+                ¡Excelente!
+            </h2>
+            
+            <p class="text-xl text-slate-600 font-bold mb-8">¡Has encontrado todas las parejas!</p>
+
+            <!-- Sección de Premio Gemini API -->
+            <div class="w-full bg-amber-50 rounded-2xl p-6 mb-8 border-2 border-amber-200">
+                <h3 class="text-lg font-bold text-amber-800 mb-3">🎁 Premio Especial de Inteligencia Artificial</h3>
+                <p class="text-sm text-amber-700 mb-4">Pídele al robot que invente una oración loca con las palabras que acabas de aprender.</p>
+                <button id="btn-gemini" onclick="generateGeminiStory()" class="bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white px-6 py-3 rounded-full font-bold text-lg shadow-md transition-transform transform hover:scale-105 flex items-center gap-2 mx-auto">
+                    <span>✨</span> ¡Crear oración mágica!
+                </button>
+                
+                <div id="gemini-output" class="mt-6 text-xl font-bold text-slate-800 hidden bg-white p-4 rounded-xl shadow-inner min-h-[80px] flex items-center justify-center text-center">
+                    <!-- Resultado de la IA -->
+                </div>
+            </div>
+
+            <button onclick="initGame()" class="bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-2xl font-black text-xl shadow-lg transition-colors w-full md:w-auto">
+                Volver a empezar ▶️
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Lista completa de vocabulario extraída del PDF
+        const fullVocabList = [
+            { id: 1, en: "🐞 ladybug", es: "mariquita" },
+            { id: 2, en: "🦗 cricket", es: "grillo" },
+            { id: 3, en: "🦗 grasshopper", es: "saltamontes" },
+            { id: 4, en: "🪲 beetle", es: "escarabajo" },
+            { id: 5, en: "🍃 katydid", es: "esperanza / insecto hoja" },
+            { id: 6, en: "🐝 bee", es: "abeja" },
+            { id: 7, en: "🦋 butterfly", es: "mariposa" },
+            { id: 8, en: "🦘 kangaroo", es: "canguro" },
+            { id: 9, en: "🐢 turtle", es: "tortuga" },
+            { id: 10, en: "🌈 colorful", es: "colorido" },
+            { id: 11, en: "✨ beautiful", es: "hermoso" },
+            { id: 12, en: "⚡ quick", es: "rápido" },
+            { id: 13, en: "🔊 noisy", es: "ruidoso" },
+            { id: 14, en: "🧟 ugly", es: "feo" },
+            { id: 15, en: "🐘 large / big / huge", es: "grande / enorme" },
+            { id: 16, en: "🐁 little / tiny", es: "pequeño / diminuto" },
+            { id: 17, en: "🎨 green, black, red...", es: "verde, negro, rojo..." }, // Acortado visualmente para las cartas
+            { id: 18, en: "🖇️ staple", es: "grapa" },
+            { id: 19, en: "1️⃣ single", es: "único / solo" },
+            { id: 20, en: "📰 article", es: "artículo" },
+            { id: 21, en: "🚪 handle", es: "mango / asa" },
+            { id: 22, en: "🧸 gentle", es: "suave / gentil" },
+            { id: 23, en: "🫧 bubble", es: "burbuja" },
+            { id: 24, en: "🕊️ fly", es: "volar" },
+            { id: 25, en: "🤸 hop / jump / leap", es: "saltar / brincar" },
+            { id: 26, en: "🥁 make noise", es: "hacer ruido" },
+            { id: 27, en: "🪑 sit", es: "sentarse" },
+            { id: 28, en: "😴 sleep", es: "dormir" },
+            { id: 29, en: "📖 write / read", es: "escribir / leer" },
+            { id: 30, en: "🎤 play / sing", es: "jugar / cantar" },
+            { id: 31, en: "〰️ buzz", es: "zumbar" },
+            { id: 32, en: "🌿 thicket", es: "matorral" },
+            { id: 33, en: "🍇 raisin", es: "pasa (uva seca)" },
+            { id: 34, en: "📜 poem / poet", es: "poema / poeta" },
+            { id: 35, en: "🌱 grass", es: "césped" },
+            { id: 36, en: "🌬️ breeze", es: "brisa" }
+        ];
+
+        let firstCard = null;
+        let secondCard = null;
+        let lockBoard = false;
+        let pairsFound = 0;
+        const PAIRS_PER_GAME = fullVocabList.length; // Usa TODAS las palabras (36 parejas)
+        let currentGameWords = [];
+
+        // Elementos del DOM
+        const boardElement = document.getElementById('game-board');
+        const scoreElement = document.getElementById('score');
+        const totalElement = document.getElementById('total-pairs');
+        const winModal = document.getElementById('win-modal');
+
+        // Utilidad: Barajar array
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Iniciar el juego
+        function initGame() {
+            winModal.classList.add('hidden');
+            winModal.classList.remove('flex');
+            boardElement.innerHTML = '';
+            firstCard = null;
+            secondCard = null;
+            lockBoard = false;
+            pairsFound = 0;
+            scoreElement.innerText = pairsFound;
+            totalElement.innerText = PAIRS_PER_GAME;
+            
+            // Limpiar estado de Gemini
+            document.getElementById('gemini-output').innerHTML = '';
+            document.getElementById('gemini-output').classList.add('hidden');
+            document.getElementById('btn-gemini').disabled = false;
+            document.getElementById('btn-gemini').classList.remove('opacity-50', 'cursor-not-allowed');
+
+            // Seleccionar 8 palabras aleatorias de la lista
+            let shuffledVocab = shuffleArray([...fullVocabList]);
+            currentGameWords = shuffledVocab.slice(0, PAIRS_PER_GAME);
+
+            // Crear array de cartas (16 cartas en total: 8 EN, 8 ES)
+            let cardsData = [];
+            currentGameWords.forEach(word => {
+                cardsData.push({ id: word.id, text: word.en, lang: 'en' });
+                cardsData.push({ id: word.id, text: word.es, lang: 'es' });
+            });
+
+            // Barajar las cartas en el tablero
+            cardsData = shuffleArray(cardsData);
+
+            // Renderizar cartas
+            cardsData.forEach(cardData => {
+                const card = document.createElement('div');
+                // Estilo base de la carta adaptado para el Mega Reto
+                card.className = `card cursor-pointer bg-white border-2 border-slate-200 rounded-xl flex items-center justify-center p-2 min-h-[80px] text-center shadow-sm font-bold text-slate-700 text-xs md:text-sm select-none ${cardData.text.length > 15 ? 'text-[10px] md:text-xs' : ''}`;
+                card.dataset.id = cardData.id;
+                card.innerText = cardData.text;
+                
+                // Indicador visual muy sutil del idioma (opcional, ayuda a diferenciar qué es qué)
+                if(cardData.lang === 'en') {
+                    card.classList.add('border-b-4', 'border-b-blue-200');
+                } else {
+                    card.classList.add('border-b-4', 'border-b-amber-200');
+                }
+
+                card.addEventListener('click', () => handleCardClick(card));
+                boardElement.appendChild(card);
+            });
+        }
+
+        // Lógica al hacer clic en una carta
+        function handleCardClick(card) {
+            // Ignorar si el tablero está bloqueado, si la carta ya fue emparejada, o si es la misma carta ya seleccionada
+            if (lockBoard || card.classList.contains('matched') || card === firstCard) return;
+
+            card.classList.add('selected');
+
+            if (!firstCard) {
+                // Primer clic
+                firstCard = card;
+                return;
+            }
+
+            // Segundo clic
+            secondCard = card;
+            checkForMatch();
+        }
+
+        // Comprobar si las dos cartas coinciden
+        function checkForMatch() {
+            let isMatch = firstCard.dataset.id === secondCard.dataset.id;
+
+            if (isMatch) {
+                disableCards();
+            } else {
+                unflipCards();
+            }
+        }
+
+        // Es un acierto
+        function disableCards() {
+            firstCard.classList.remove('selected');
+            secondCard.classList.remove('selected');
+            firstCard.classList.add('matched');
+            secondCard.classList.add('matched');
+            
+            pairsFound++;
+            scoreElement.innerText = pairsFound;
+
+            resetBoard();
+
+            if (pairsFound === PAIRS_PER_GAME) {
+                setTimeout(() => {
+                    winModal.classList.remove('hidden');
+                    winModal.classList.add('flex');
+                }, 500);
+            }
+        }
+
+        // Es un error
+        function unflipCards() {
+            lockBoard = true;
+            firstCard.classList.remove('selected');
+            secondCard.classList.remove('selected');
+            
+            firstCard.classList.add('error');
+            secondCard.classList.add('error');
+
+            setTimeout(() => {
+                firstCard.classList.remove('error');
+                secondCard.classList.remove('error');
+                resetBoard();
+            }, 800);
+        }
+
+        // Reiniciar variables de turno
+        function resetBoard() {
+            [firstCard, secondCard, lockBoard] = [null, null, false];
+        }
+
+        // --- LÓGICA DE GEMINI API ---
+        async function generateGeminiStory() {
+            const btn = document.getElementById('btn-gemini');
+            const outputBox = document.getElementById('gemini-output');
+            
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            outputBox.classList.remove('hidden');
+            outputBox.innerHTML = '<span class="animate-pulse">Pensando una idea loca... 🤖💭</span>';
+
+            // Seleccionar 2 o 3 palabras al azar de la partida actual para el prompt
+            const randomWords = shuffleArray([...currentGameWords]).slice(0, 2);
+            const wordsText = randomWords.map(w => w.es).join(' y ');
+
+            const promptText = `Escribe una oración muy corta, creativa y muy divertida (máximo 15 palabras) pensada para hacer reír a un niño de 8 años. La oración DEBE incluir obligatoriamente estas palabras: ${wordsText}. Usa emojis.`;
+
+            const apiKey = ""; // El entorno de ejecución proporciona la clave en tiempo de ejecución
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{ parts: [{ text: promptText }] }],
+                systemInstruction: { parts: [{ text: "Eres un maestro de inglés divertido y creativo para niños. Responde siempre en español." }] }
+            };
+
+            let retries = 5;
+            let delay = 1000;
+
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    
+                    const data = await response.json();
+                    const aiText = data.candidates[0].content.parts[0].text;
+                    outputBox.innerHTML = aiText;
+                    return; // Éxito, salir del bucle
+
+                } catch (error) {
+                    if (i === retries - 1) {
+                        outputBox.innerHTML = '<span class="text-red-500">Oops, el robot está dormido. ¡Inténtalo de nuevo en la siguiente partida! 💤</span>';
+                    } else {
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2;
+                    }
+                }
+            }
+        }
+
+        // Iniciar el juego al cargar la página
+        window.onload = initGame;
+    </script>
+</body>
+</html>
