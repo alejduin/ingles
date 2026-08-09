@@ -1,22 +1,26 @@
 # Inglés — English Vocabulary Learning Tools
 
+**▶ Play online: [alejduin.github.io/ingles](https://alejduin.github.io/ingles/)**
+
 A suite of interactive, client-side web applications designed to help Spanish-speaking children (ages 8+) learn English vocabulary through gamified experiences. Built with vanilla HTML, CSS, and JavaScript — no build tools or server required.
 
 ## Games
 
 | Game | File | Type | Vocabulary |
 |------|------|------|------------|
-| **Vocabulario** | `vocabulario.html` | Flashcard dashboard with flip cards and progress chart | Unit 5: Insects, Adjectives, -le words, Verbs, Nature (36 words) |
-| **Trivia** | `trivia.html` | Multiple-choice quiz with audio | Unit 5 (36 words) |
-| **Pares de Palabras** | `pares-de-palabras.html` | Memory-style matching game (English ↔ Spanish cards) | Unit 5 (36 pairs) |
-| **Vocabulario Unidad 1** | `vocabulario-unidad-01.html` | Multiple-choice quiz | Unit 1: Events, Sports, Feelings (-ed), Descriptions (-ing) (26 words) |
-| **Vocabulario Unidad 2** | `vocabulario-unidad-02.html` | Multiple-choice quiz | Unit 2: Actions, Nature, Gerunds (27 words) |
-| **Vocabulario Science** | `vocabulario-science.html` | Multiple-choice quiz | Science: Senses, Organ Systems, Food/Nutrients, Teeth (50 words) |
-| **Trivia Science** | `triviaScience.html` | Multiple-choice quiz | Science: Food/Body, Teeth, Action Verbs, Adjectives (55 words) |
+| **Vocabulario** | [`vocabulario.html`](https://alejduin.github.io/ingles/vocabulario.html) | Flashcard dashboard with flip cards and progress chart | Unit 5: Insects, Adjectives, -le words, Verbs, Nature (36 words) |
+| **Trivia** | [`trivia.html`](https://alejduin.github.io/ingles/trivia.html) | Multiple-choice quiz with audio | Unit 5 (36 words) |
+| **Pares de Palabras** | [`pares-de-palabras.html`](https://alejduin.github.io/ingles/pares-de-palabras.html) | Memory-style matching game (English ↔ Spanish cards) | Unit 5 (36 pairs) |
+| **Vocabulario Unidad 1** | [`vocabulario-unidad-01.html`](https://alejduin.github.io/ingles/vocabulario-unidad-01.html) | Multiple-choice quiz | Unit 1: Events, Sports, Feelings (-ed), Descriptions (-ing) (26 words) |
+| **Vocabulario Unidad 2** | [`vocabulario-unidad-02.html`](https://alejduin.github.io/ingles/vocabulario-unidad-02.html) | Multiple-choice quiz | Unit 2: Actions, Nature, Gerunds (27 words) |
+| **Vocabulario Science** | [`vocabulario-science.html`](https://alejduin.github.io/ingles/vocabulario-science.html) | Multiple-choice quiz | Science: Senses, Organ Systems, Food/Nutrients, Teeth (50 words) |
+| **Trivia Science** | [`triviaScience.html`](https://alejduin.github.io/ingles/triviaScience.html) | Multiple-choice quiz | Science: Food/Body, Teeth, Action Verbs, Adjectives (55 words) |
 
 ## How to Use
 
-Open any `.html` file directly in a modern web browser. No server or installation needed.
+**Online:** visit [alejduin.github.io/ingles](https://alejduin.github.io/ingles/) — nothing to install.
+
+**Locally:** open any `.html` file directly in a modern web browser. No server or installation needed.
 
 ### Game Mechanics
 
@@ -56,20 +60,34 @@ const apiKey = "your-api-key-here";
 
 The key is intentionally left blank (`""`) and expected to be injected at runtime.
 
+> **Warning:** this site is public and the code runs entirely in the browser. Any key hardcoded into these files is visible to anyone via View Source. Do not commit a real key — use a backend proxy or an HTTP-referrer-restricted key instead.
+
 ## Project Structure
 
 ```
 ingles/
+├── index.html                    # landing page / game menu
 ├── vocabulario.html
 ├── trivia.html
 ├── pares-de-palabras.html
 ├── vocabulario-unidad-01.html
 ├── vocabulario-unidad-02.html
 ├── vocabulario-science.html
-└── triviaScience.html
+├── triviaScience.html
+└── .nojekyll                     # serve files as-is on GitHub Pages
 ```
 
 Each file is self-contained (HTML + CSS + JS in one file). No shared modules, no build step.
+
+## Deployment
+
+Hosted on **GitHub Pages**, served from the `main` branch (root). Deployment is automatic — every push to `main` republishes the site in ~30 seconds:
+
+```sh
+git add -A && git commit -m "your message" && git push
+```
+
+There is no build step or workflow file; GitHub Pages serves the HTML directly. The `.nojekyll` file disables Jekyll preprocessing.
 
 ## Color Themes
 
@@ -80,4 +98,4 @@ Each file is self-contained (HTML + CSS + JS in one file). No shared modules, no
 
 ## License
 
-Private / educational use.
+Educational use.
