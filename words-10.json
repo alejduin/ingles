@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "unit": "10",
+    "title": "Unidad 10",
+    "subtitle": "Transporte, energía y cuantificadores",
+    "theme": "sky"
+  },
+  "categories": [
+    { "name": "Transporte", "label": "Transporte (Transportation)", "icon": "🚑" },
+    { "name": "Energía", "label": "Energía y Tecnología (Energy)", "icon": "⚡" },
+    { "name": "Gramática", "label": "Cuantificadores (Quantifiers)", "icon": "🔤" },
+    { "name": "Lugares", "label": "Lugares y Otros (Places)", "icon": "🗺️" }
+  ],
+  "words": [
+    { "en": "ambulance", "es": "ambulancia", "icon": "🚑", "cat": "Transporte" },
+    { "en": "escalator", "es": "escalera mecánica", "icon": "🪜", "cat": "Transporte" },
+    { "en": "subway", "es": "metro / tren subterráneo", "icon": "🚇", "cat": "Transporte" },
+    { "en": "fire engine", "es": "camión de bomberos", "icon": "🚒", "cat": "Transporte" },
+    { "en": "carpool", "es": "compartir auto / viaje compartido", "icon": "🚙", "cat": "Transporte" },
+    { "en": "train", "es": "tren", "icon": "🚆", "cat": "Transporte" },
+    { "en": "taxi", "es": "taxi", "icon": "🚕", "cat": "Transporte" },
+    { "en": "elevator", "es": "ascensor / elevador", "icon": "🛗", "cat": "Transporte" },
+    { "en": "helicopter", "es": "helicóptero", "icon": "🚁", "cat": "Transporte" },
+    { "en": "traffic jam", "es": "embotellamiento / atasco", "icon": "🚦", "cat": "Transporte" },
+
+    { "en": "energy", "es": "energía", "icon": "⚡", "cat": "Energía" },
+    { "en": "wind energy", "es": "energía eólica (del viento)", "icon": "🌬️", "cat": "Energía" },
+    { "en": "wind turbine", "es": "turbina eólica / aerogenerador", "icon": "🎐", "cat": "Energía" },
+    { "en": "wind farm", "es": "parque eólico", "icon": "🌾", "cat": "Energía" },
+    { "en": "blade", "es": "aspa (de la turbina)", "icon": "🗡️", "cat": "Energía" },
+    { "en": "electricity", "es": "electricidad", "icon": "💡", "cat": "Energía" },
+    { "en": "power plant", "es": "planta de energía / central eléctrica", "icon": "🏭", "cat": "Energía" },
+    { "en": "solar energy", "es": "energía solar", "icon": "🌞", "cat": "Energía" },
+    { "en": "solar panel", "es": "panel solar", "icon": "☀️", "cat": "Energía" },
+    { "en": "solar farm", "es": "parque solar", "icon": "🌻", "cat": "Energía" },
+
+    { "en": "a few", "es": "unos pocos", "icon": "🤏", "cat": "Gramática" },
+    { "en": "a little", "es": "un poco", "icon": "💧", "cat": "Gramática" },
+    { "en": "a lot of", "es": "mucho / un montón de", "icon": "📦", "cat": "Gramática" },
+    { "en": "lots of", "es": "muchos / muchísimos", "icon": "📚", "cat": "Gramática" },
+
+    { "en": "town", "es": "pueblo / ciudad pequeña", "icon": "🏘️", "cat": "Lugares" },
+    { "en": "state", "es": "estado (región)", "icon": "🗺️", "cat": "Lugares" },
+    { "en": "grocery store", "es": "supermercado", "icon": "🛒", "cat": "Lugares" }
+  ]
+}
