@@ -233,11 +233,19 @@
             elTotal.innerText = fullVocabList.length;
             updateScoreUI();
             
-            // Reset IA state
-            document.getElementById('gemini-output').innerHTML = '';
-            document.getElementById('gemini-output').classList.add('hidden');
-            document.getElementById('btn-gemini').disabled = false;
-            document.getElementById('btn-gemini').classList.remove('opacity-50', 'cursor-not-allowed');
+            // Reset IA state. El bloque de Gemini está comentado en el modal de victoria,
+            // así que estos elementos pueden no existir: sin la guarda, initGame() lanzaba
+            // un TypeError y loadNextQuestion() nunca llegaba a ejecutarse.
+            const geminiOutput = document.getElementById('gemini-output');
+            if (geminiOutput) {
+                geminiOutput.innerHTML = '';
+                geminiOutput.classList.add('hidden');
+            }
+            const geminiBtn = document.getElementById('btn-gemini');
+            if (geminiBtn) {
+                geminiBtn.disabled = false;
+                geminiBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
 
             loadNextQuestion();
         }
