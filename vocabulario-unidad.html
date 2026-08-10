@@ -485,7 +485,12 @@
                 window.currentAudio.pause();
             }
 
-            window.currentAudio = new Audio(url);
+            // Google bloquea /translate_tts si el navegador envía un Referer con dominio
+            // externo (anti-hotlinking) → responde 404 y caemos al TTS robótico del sistema.
+            // Con referrerPolicy='no-referrer' el navegador omite ese header solo para esta petición.
+            window.currentAudio = new Audio();
+            window.currentAudio.referrerPolicy = 'no-referrer';
+            window.currentAudio.src = url;
 
             // Reproducir. Si por alguna razón falla la conexión, usa la voz del sistema como plan B
             window.currentAudio.play().catch(e => {

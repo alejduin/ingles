@@ -345,7 +345,11 @@
                 window.currentAudio.pause();
             }
             
-            window.currentAudio = new Audio(url);
+            // Google bloquea /translate_tts si el Referer es de otro dominio (anti-hotlinking).
+            // referrerPolicy='no-referrer' hace que el navegador omita ese header en esta petición.
+            window.currentAudio = new Audio();
+            window.currentAudio.referrerPolicy = 'no-referrer';
+            window.currentAudio.src = url;
             
             // Reproducir. Si por alguna razón falla la conexión, usa la voz del sistema como plan B
             window.currentAudio.play().catch(e => {
