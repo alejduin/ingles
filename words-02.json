@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "unit": "2",
+    "title": "Unidad 2",
+    "subtitle": "Acciones, naturaleza y gerundios",
+    "theme": "sky"
+  },
+  "categories": [
+    { "name": "Acciones", "label": "Acciones / Deportes (Verbos Base)", "icon": "🏀" },
+    { "name": "Naturaleza", "label": "La Naturaleza (Tierra y Agua)", "icon": "🌾" },
+    { "name": "Gerundios (-ing)", "label": "Gerundios (Actividades terminadas en -ing)", "icon": "🏀" }
+  ],
+  "words": [
+    { "en": "bounce", "es": "rebotar", "icon": "🏀", "cat": "Acciones" },
+    { "en": "drop", "es": "dejar caer", "icon": "🔽", "cat": "Acciones" },
+    { "en": "kick", "es": "patear", "icon": "🦵", "cat": "Acciones" },
+    { "en": "tag", "es": "tocar (juego de atrapar)", "icon": "🏃‍♂️", "cat": "Acciones" },
+    { "en": "skip", "es": "brincar (con un pie y otro)", "icon": "👧", "cat": "Acciones" },
+    { "en": "run", "es": "correr", "icon": "🏃", "cat": "Acciones" },
+    { "en": "jump", "es": "saltar", "icon": "🦘", "cat": "Acciones" },
+    { "en": "dance", "es": "bailar", "icon": "💃", "cat": "Acciones" },
+    { "en": "land", "es": "aterrizar / caer de pie", "icon": "🤸", "cat": "Acciones" },
+    { "en": "clean", "es": "limpiar", "icon": "🧹", "cat": "Acciones" },
+    { "en": "cook", "es": "cocinar", "icon": "🍳", "cat": "Acciones" },
+    { "en": "ski", "es": "esquiar", "icon": "⛷️", "cat": "Acciones" },
+
+    { "en": "plain", "es": "llanura / planicie", "icon": "🌾", "cat": "Naturaleza" },
+    { "en": "canyon", "es": "cañón", "icon": "🏜️", "cat": "Naturaleza" },
+    { "en": "cliff", "es": "acantilado", "icon": "⛰️", "cat": "Naturaleza" },
+    { "en": "lake", "es": "lago", "icon": "🏞️", "cat": "Naturaleza" },
+    { "en": "stream", "es": "arroyo / riachuelo", "icon": "🌊", "cat": "Naturaleza" },
+
+    { "en": "bouncing", "es": "rebotando / el rebotar", "icon": "🏀", "cat": "Gerundios (-ing)" },
+    { "en": "kicking", "es": "pateando / el patear", "icon": "🦵", "cat": "Gerundios (-ing)" },
+    { "en": "running", "es": "corriendo / el correr", "icon": "🏃", "cat": "Gerundios (-ing)" },
+    { "en": "jumping", "es": "saltando / el saltar", "icon": "🦘", "cat": "Gerundios (-ing)" },
+    { "en": "dancing", "es": "bailando / el bailar", "icon": "💃", "cat": "Gerundios (-ing)" },
+    { "en": "skipping", "es": "brincando / el brincar", "icon": "👧", "cat": "Gerundios (-ing)" },
+    { "en": "landing", "es": "aterrizando / el aterrizar", "icon": "🛬", "cat": "Gerundios (-ing)" },
+    { "en": "cleaning", "es": "limpiando / el limpiar", "icon": "🧼", "cat": "Gerundios (-ing)" },
+    { "en": "cooking", "es": "cocinando / el cocinar", "icon": "👨‍🍳", "cat": "Gerundios (-ing)" },
+    { "en": "skiing", "es": "esquiando / el esquiar", "icon": "⛷️", "cat": "Gerundios (-ing)" }
+  ]
+}

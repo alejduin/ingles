@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "unit": "1",
+    "title": "Unidad 1",
+    "subtitle": "Eventos, deportes y adjetivos -ed / -ing",
+    "theme": "sky"
+  },
+  "categories": [
+    { "name": "Eventos", "label": "Eventos y Celebraciones (Events)", "icon": "💒" },
+    { "name": "Deportes", "label": "Deportes y Competencias (Sports)", "icon": "🏃" },
+    { "name": "Sentimientos (-ed)", "label": "Adjetivos: Cómo nos sentimos (-ed)", "icon": "😲" },
+    { "name": "Descripciones (-ing)", "label": "Adjetivos: Describiendo cosas (-ing)", "icon": "🎁" }
+  ],
+  "words": [
+    { "en": "wedding", "es": "boda", "icon": "💒", "cat": "Eventos" },
+    { "en": "festival", "es": "festival", "icon": "🎪", "cat": "Eventos" },
+    { "en": "family reunion", "es": "reunión familiar", "icon": "👨‍👩‍👧‍👦", "cat": "Eventos" },
+    { "en": "fair", "es": "feria", "icon": "🎡", "cat": "Eventos" },
+    { "en": "folk dance", "es": "baile folclórico", "icon": "💃", "cat": "Eventos" },
+
+    { "en": "race", "es": "carrera", "icon": "🏃", "cat": "Deportes" },
+    { "en": "athlete", "es": "atleta", "icon": "🏅", "cat": "Deportes" },
+    { "en": "player", "es": "jugador", "icon": "⚽", "cat": "Deportes" },
+    { "en": "team", "es": "equipo", "icon": "🤝", "cat": "Deportes" },
+    { "en": "winner", "es": "ganador", "icon": "🏆", "cat": "Deportes" },
+    { "en": "game", "es": "partido / juego", "icon": "🏟️", "cat": "Deportes" },
+    { "en": "home", "es": "local (equipo)", "icon": "🏠", "cat": "Deportes" },
+    { "en": "visitor", "es": "visitante (equipo)", "icon": "🧳", "cat": "Deportes" },
+
+    { "en": "surprised", "es": "sorprendido", "icon": "😲", "cat": "Sentimientos (-ed)" },
+    { "en": "amazed", "es": "asombrado", "icon": "🤩", "cat": "Sentimientos (-ed)" },
+    { "en": "tired", "es": "cansado", "icon": "😫", "cat": "Sentimientos (-ed)" },
+    { "en": "excited", "es": "emocionado", "icon": "😄", "cat": "Sentimientos (-ed)" },
+    { "en": "bored", "es": "aburrido (sintiendo aburrimiento)", "icon": "🥱", "cat": "Sentimientos (-ed)" },
+    { "en": "interested", "es": "interesado", "icon": "🤔", "cat": "Sentimientos (-ed)" },
+    { "en": "sleepy", "es": "soñoliento", "icon": "😴", "cat": "Sentimientos (-ed)" },
+
+    { "en": "surprising", "es": "sorprendente", "icon": "🎁", "cat": "Descripciones (-ing)" },
+    { "en": "amazing", "es": "asombroso", "icon": "✨", "cat": "Descripciones (-ing)" },
+    { "en": "tiring", "es": "agotador", "icon": "🧗", "cat": "Descripciones (-ing)" },
+    { "en": "exciting", "es": "emocionante", "icon": "🎢", "cat": "Descripciones (-ing)" },
+    { "en": "boring", "es": "aburrido (algo que aburre)", "icon": "📉", "cat": "Descripciones (-ing)" },
+    { "en": "interesting", "es": "interesante", "icon": "📚", "cat": "Descripciones (-ing)" }
+  ]
+}
