@@ -9,8 +9,8 @@ A suite of interactive, client-side web applications designed to help Spanish-sp
 | Game | File | Type | Vocabulary |
 |------|------|------|------------|
 | **Vocabulario** | [`vocabulario.html`](https://alejduin.github.io/ingles/vocabulario.html) | Flashcard dashboard with flip cards and progress chart | Unit 5: Insects, Adjectives, -le words, Verbs, Nature (36 words) |
-| **Trivia** | [`trivia.html`](https://alejduin.github.io/ingles/trivia.html) | Multiple-choice quiz with audio | Unit 5 (36 words) |
 | **Pares de Palabras** | [`pares-de-palabras.html`](https://alejduin.github.io/ingles/pares-de-palabras.html) | Memory-style matching game (English ↔ Spanish cards) | Unit 5 (36 pairs) |
+| **Trivia Unidad 5** | [`vocabulario-unidad.html?data=words-05.json`](https://alejduin.github.io/ingles/vocabulario-unidad.html?data=words-05.json) | Reusable multiple-choice quiz | Unit 5: Insects, Adjectives, -le words, Verbs, Nature (36 words) |
 | **Trivia Unidad 1** | [`vocabulario-unidad.html?data=words-01.json`](https://alejduin.github.io/ingles/vocabulario-unidad.html?data=words-01.json) | Reusable multiple-choice quiz | Unit 1: Events, Sports, Feelings (-ed), Descriptions (-ing) (26 words) |
 | **Trivia Unidad 2** | [`vocabulario-unidad.html?data=words-02.json`](https://alejduin.github.io/ingles/vocabulario-unidad.html?data=words-02.json) | Reusable multiple-choice quiz | Unit 2: Actions, Nature, Gerunds (27 words) |
 | **Trivia Unidad 10** | [`vocabulario-unidad.html?data=words-10.json`](https://alejduin.github.io/ingles/vocabulario-unidad.html?data=words-10.json) | Reusable multiple-choice quiz | Unit 10: Transport, Energy, Quantifiers, Places (27 words) |
@@ -71,7 +71,7 @@ Notes:
 - A plain array `[ {...}, {...} ]` is also accepted for compatibility.
 - The theme can also be forced via `?theme=amber`.
 
-**2. Legacy inline lists** — the older games (`vocabulario.html`, `trivia.html`, both `*-science.html`, `pares-de-palabras.html`) still keep the vocabulary as an inline `fullVocabList` array:
+**2. Legacy inline lists** — the older games (`vocabulario.html`, both `*-science.html`, `pares-de-palabras.html`) still keep the vocabulary as an inline `fullVocabList` array:
 
 ```js
 { id: Number, en: "English", es: "Español", icon: "emoji", cat: "category" }
@@ -99,11 +99,12 @@ The key is intentionally left blank (`""`) and expected to be injected at runtim
 ingles/
 ├── index.html                    # landing page / game menu
 ├── vocabulario.html              # Flashcards Unit 5 (Chart.js dashboard)
-├── trivia.html                   # Trivia Unit 5 (inline vocabulary)
+├── trivia.html                   # RETIRED — not linked from index.html, see note below
 ├── pares-de-palabras.html        # Matching game Unit 5
 ├── vocabulario-unidad.html       # Reusable quiz, reads ?data=<file>.json
 ├── words-01.json                 # Unit 1 vocabulary
 ├── words-02.json                 # Unit 2 vocabulary
+├── words-05.json                 # Unit 5 vocabulary
 ├── words-10.json                 # Unit 10 vocabulary
 ├── vocabulario-science.html      # Science quiz (inline vocabulary)
 ├── triviaScience.html            # Science trivia (inline vocabulary)
@@ -111,6 +112,12 @@ ingles/
 ```
 
 Each HTML file is self-contained (HTML + CSS + JS in one file). No shared modules, no build step. `vocabulario-unidad.html` reads its data from the sibling `words-*.json` files.
+
+### Retired: `trivia.html`
+
+Unit 5 now uses the reusable quiz (`vocabulario-unidad.html?data=words-05.json`), like every other unit. `trivia.html` was functionally the same multiple-choice quiz with its vocabulary hardcoded, so keeping both meant maintaining Unit 5 in two places.
+
+The file is still in the repository and still works if opened directly — only the link from `index.html` is commented out (the original card markup is preserved in that comment). It is being held until a genuine trivia is built: comprehension questions rather than English→Spanish translation.
 
 ## Deployment
 
@@ -127,7 +134,7 @@ There is no build step or workflow file; GitHub Pages serves the HTML directly. 
 | Files | Brand Color |
 |-------|-------------|
 | `vocabulario.html`, `pares-de-palabras.html` | Amber/Yellow |
-| `trivia.html`, `vocabulario-unidad.html` (default), `triviaScience.html` | Sky Blue |
+| `vocabulario-unidad.html` (default), `triviaScience.html` | Sky Blue |
 | `vocabulario-science.html` | Green |
 
 The reusable quiz picks its color from `meta.theme` in the JSON, or from `?theme=` in the URL.
