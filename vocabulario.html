@@ -177,7 +177,7 @@
                 const btn = document.createElement('button');
                 const isSelected = currentFilter === cat;
                 
-                btn.className = `px-5 py-2 rounded-full font-bold text-sm md:text-base transition-all duration-200 transform hover:scale-105 ${
+                btn.className = `px-5 py-2 rounded-full font-bold text-sm md:text-base transition-[transform] duration-200 transform hover:scale-105 ${
                     isSelected 
                     ? 'bg-brand-dark text-white shadow-lg' 
                     : 'bg-white text-slate-600 hover:bg-brand-light border border-slate-200 shadow-sm'

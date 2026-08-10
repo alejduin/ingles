@@ -170,7 +170,7 @@
             cursor: pointer;
             background: transparent;
             color: rgba(255,255,255,0.7);
-            transition: all 0.25s ease;
+            transition: color 200ms ease, background-color 200ms ease;
             outline: none;
         }
         .filter-btn:hover { color: white; background: rgba(255,255,255,0.1); }
@@ -208,7 +208,8 @@
             border-radius: 2rem;
             padding: 1.75rem 1.5rem;
             box-shadow: 0 8px 30px var(--card-shadow);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateY(0);
             animation: cardFadeIn 0.6s ease-out both;
             position: relative;
