@@ -22,7 +22,15 @@
                         }
                     }
                 }
-            }
+            },
+            plugins: [
+                // Variante "fine": aplica solo donde hay hover real y puntero fino.
+                // En táctil el navegador sintetiza :hover al tocar y el elemento
+                // se queda desplazado hasta que tocas en otro sitio.
+                function ({ addVariant }) {
+                    addVariant('fine', '@media (hover: hover) and (pointer: fine)');
+                }
+            ]
         }
     </script>
     <style>
@@ -41,6 +49,12 @@
         .backface-hidden { backface-visibility: hidden; }
         .rotate-y-180 { transform: rotateY(180deg); }
         .card-container.flipped .transform-style-3d { transform: rotateY(180deg); }
+
+        /* El giro es la mecánica de la tarjeta, no se puede sustituir por un fundido:
+           sin transición el cambio de cara es instantáneo, que es lo correcto aquí. */
+        @media (prefers-reduced-motion: reduce) {
+            .transform-style-3d { transition: none; }
+        }
     </style>
 </head>
 <body class="text-slate-800 antialiased min-h-screen flex flex-col">
@@ -177,7 +191,7 @@
                 const btn = document.createElement('button');
                 const isSelected = currentFilter === cat;
                 
-                btn.className = `px-5 py-2 rounded-full font-bold text-sm md:text-base transition-[transform] duration-200 transform hover:scale-105 ${
+                btn.className = `px-5 py-2 rounded-full font-bold text-sm md:text-base transition-[transform] duration-200 transform fine:hover:scale-105 ${
                     isSelected 
                     ? 'bg-brand-dark text-white shadow-lg' 
                     : 'bg-white text-slate-600 hover:bg-brand-light border border-slate-200 shadow-sm'

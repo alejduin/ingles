@@ -20,7 +20,15 @@
                         error: { DEFAULT: '#ef4444', light: '#fee2e2' } // Rojo para errores
                     }
                 }
-            }
+            },
+            plugins: [
+                // Variante "fine": aplica solo donde hay hover real y puntero fino.
+                // En táctil el navegador sintetiza :hover al tocar y el elemento
+                // se queda desplazado hasta que tocas en otro sitio.
+                function ({ addVariant }) {
+                    addVariant('fine', '@media (hover: hover) and (pointer: fine)');
+                }
+            ]
         }
     </script>
     <style>
@@ -31,8 +39,14 @@
             transform: scale(1);
         }
         .option-btn:hover:not(:disabled) {
-            transform: scale(1.02) translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* El desplazamiento solo donde hay hover real: en táctil el tap
+           sintetiza :hover y dejaría el botón levantado. */
+        @media (hover: hover) and (pointer: fine) {
+            .option-btn:hover:not(:disabled) {
+                transform: scale(1.02) translateY(-2px);
+            }
         }
         .option-btn:active:not(:disabled) {
             transform: scale(0.98);
@@ -82,6 +96,20 @@
         .text-glow {
             text-shadow: 0 0 20px rgba(250, 204, 21, 0.6), 0 0 40px rgba(250, 204, 21, 0.4);
         }
+
+        /* Menos movimiento, no cero: se conservan color y opacidad, que son el
+           feedback que le dice al niño si acertó. Solo se retira el desplazamiento. */
+        @media (prefers-reduced-motion: reduce) {
+            .correct-answer { animation: none; }
+            .wrong-answer   { animation: none; }
+            .modal-enter    { animation: fadeInReduced 200ms ease-out both; }
+            .option-btn     { transition: box-shadow 160ms ease; }
+            .option-btn:hover:not(:disabled) { transform: none; }
+        }
+        @keyframes fadeInReduced {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
     </style>
 </head>
 <body class="text-slate-800 antialiased min-h-screen flex flex-col items-center py-6 px-4">
@@ -112,7 +140,7 @@
         
         <!-- Zona Izquierda: Tarjeta Principal (Inglés) -->
         <div class="w-full md:w-1/2 flex flex-col justify-center">
-            <div class="bg-white border-4 border-brand-light rounded-3xl p-8 md:p-12 shadow-lg flex flex-col items-center justify-center min-h-[300px] text-center transform transition-[transform,box-shadow] duration-200 cursor-pointer hover:scale-105 hover:border-brand hover:shadow-xl relative group" id="target-card" onclick="playCurrentWordAudio()" title="Haz clic para escuchar la pronunciación">
+            <div class="bg-white border-4 border-brand-light rounded-3xl p-8 md:p-12 shadow-lg flex flex-col items-center justify-center min-h-[300px] text-center transform transition-[transform,box-shadow] duration-200 cursor-pointer fine:hover:scale-105 hover:border-brand hover:shadow-xl relative group" id="target-card" onclick="playCurrentWordAudio()" title="Haz clic para escuchar la pronunciación">
                 <div class="absolute top-4 right-4 text-3xl opacity-40 group-hover:opacity-100 transition-opacity group-hover:animate-bounce">🔊</div>
                 <span id="target-emoji" class="text-6xl md:text-8xl mb-4 drop-shadow-sm">🤔</span>
                 <h2 id="target-word" class="text-3xl md:text-5xl font-black text-brand-dark break-words w-full">Cargando...</h2>
@@ -141,7 +169,7 @@
             <div class="w-full bg-blue-50 rounded-2xl p-6 mb-8 border-2 border-blue-200">
                 <h3 class="text-lg font-bold text-blue-800 mb-3">🎁 Premio Especial de Inteligencia Artificial</h3>
                 <p class="text-sm text-blue-700 mb-4">Pídele al robot que invente una historia cortita con algunas de las palabras que aprendiste.</p>
-                <button id="btn-gemini" onclick="generateGeminiStory()" class="bg-gradient-to-r from-blue-400 to-brand hover:from-blue-500 hover:to-brand-dark text-white px-6 py-3 rounded-full font-bold text-lg shadow-md transition-transform transform hover:scale-105 flex items-center gap-2 mx-auto">
+                <button id="btn-gemini" onclick="generateGeminiStory()" class="bg-gradient-to-r from-blue-400 to-brand hover:from-blue-500 hover:to-brand-dark text-white px-6 py-3 rounded-full font-bold text-lg shadow-md transition-transform transform fine:hover:scale-105 flex items-center gap-2 mx-auto">
                     <span>✨</span> ¡Crear cuento mágico!
                 </button>
                 

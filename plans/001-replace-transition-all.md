@@ -1,6 +1,7 @@
 # 001 — Replace `transition: all` with explicit property lists
 
-- **Status**: APPLIED — mechanical check passed, feel check NOT run
+- **Status**: APPLIED — mechanical check passed; `transition-[transform,box-shadow]`
+  confirmed to compile (see plan 003); browser feel check still NOT run
 - **Commit**: e48990f (applied on top of it)
 - **Severity**: HIGH
 - **Category**: Performance (AUDIT.md §5)

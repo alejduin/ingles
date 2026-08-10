@@ -7,8 +7,12 @@ audit that produced it.
 | # | Plan | Severity | Category | Files | Status |
 | --- | --- | --- | --- | --- | --- |
 | 001 | [Replace `transition: all`](001-replace-transition-all.md) | HIGH | Performance | 7 | APPLIED, feel check pending |
-| 002 | [Reduced-motion coverage](002-reduced-motion-coverage.md) | MEDIUM | Accessibility | 6 | TODO |
-| 003 | [Gate hover motion](003-gate-hover-motion.md) | MEDIUM | Accessibility | 7 | TODO |
+| 002 | [Reduced-motion coverage](002-reduced-motion-coverage.md) | MEDIUM | Accessibility | 6 | APPLIED, emulated feel check pending |
+| 003 | [Gate hover motion](003-gate-hover-motion.md) | MEDIUM | Accessibility | 7 | APPLIED, touch feel check pending |
+
+All three plans are applied. The remaining verification in every case is the
+same: a human opening the pages in a browser. No browser is available in the
+environment these were executed from, so no plan is marked DONE.
 
 ## Execution order
 

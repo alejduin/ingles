@@ -1,7 +1,7 @@
 # 003 — Gate hover-triggered movement behind a fine-pointer media query
 
-- **Status**: TODO
-- **Commit**: e48990f
+- **Status**: APPLIED — mechanical checks passed, touch feel check NOT run
+- **Commit**: e48990f (applied on top of 466ec10)
 - **Severity**: MEDIUM
 - **Category**: Accessibility (AUDIT.md §6)
 - **Estimated scope**: 7 files, ~14 edits
@@ -100,6 +100,19 @@ Then rewrite each utility as `fine:hover:scale-105` (replacing
 **If the plugin approach fails to compile in the CDN build, STOP and report.**
 Do not fall back to deleting the hover scale — losing the pointer affordance on
 desktop is a worse outcome than the current bug.
+
+**Resolved.** Verified by compiling `fine:hover:scale-105` with the real
+tailwindcss@3.4.17 (the exact version cdn.tailwindcss.com redirects to). Output:
+
+```css
+@media (hover:hover) and (pointer:fine){
+  .fine\:hover\:scale-105:hover{ --tw-scale-x:1.05; --tw-scale-y:1.05; ... }
+}
+```
+
+The same run also confirmed `transition-[transform,box-shadow]` compiles to
+`transition-property:transform,box-shadow`, closing the open risk left by
+plan 001.
 
 ## Repo conventions to follow
 

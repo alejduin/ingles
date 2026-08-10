@@ -1,7 +1,7 @@
 # 002 — Add `prefers-reduced-motion` to the six files that lack it
 
-- **Status**: TODO
-- **Commit**: e48990f
+- **Status**: APPLIED — mechanical checks passed, emulated feel check NOT run
+- **Commit**: e48990f (applied on top of 466ec10, after plan 003)
 - **Severity**: MEDIUM
 - **Category**: Accessibility (AUDIT.md §6)
 - **Estimated scope**: 6 files, one new media query each

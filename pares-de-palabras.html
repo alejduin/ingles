@@ -17,7 +17,15 @@
                         error: { DEFAULT: '#f87171' } // Rojo para error
                     }
                 }
-            }
+            },
+            plugins: [
+                // Variante "fine": aplica solo donde hay hover real y puntero fino.
+                // En táctil el navegador sintetiza :hover al tocar y el elemento
+                // se queda desplazado hasta que tocas en otro sitio.
+                function ({ addVariant }) {
+                    addVariant('fine', '@media (hover: hover) and (pointer: fine)');
+                }
+            ]
         }
     </script>
     <style>
@@ -60,6 +68,21 @@
         }
         .text-glow {
             text-shadow: 0 0 20px rgba(250, 204, 21, 0.6), 0 0 40px rgba(250, 204, 21, 0.4);
+        }
+
+        /* Menos movimiento, no cero: el rojo del error y el verde del acierto se
+           mantienen; se retiran la sacudida y los cambios de escala. */
+        @media (prefers-reduced-motion: reduce) {
+            .card.error    { animation: none; }
+            .card          { transition: box-shadow 200ms ease, border-color 200ms ease,
+                                         background-color 200ms ease; }
+            .card.selected { transform: none; }
+            .card.matched  { transform: none; }
+            .modal-enter   { animation: fadeInReduced 200ms ease-out both; }
+        }
+        @keyframes fadeInReduced {
+            from { opacity: 0; }
+            to   { opacity: 1; }
         }
     </style>
 </head>
@@ -104,7 +127,7 @@
             <div class="w-full bg-amber-50 rounded-2xl p-6 mb-8 border-2 border-amber-200">
                 <h3 class="text-lg font-bold text-amber-800 mb-3">🎁 Premio Especial de Inteligencia Artificial</h3>
                 <p class="text-sm text-amber-700 mb-4">Pídele al robot que invente una oración loca con las palabras que acabas de aprender.</p>
-                <button id="btn-gemini" onclick="generateGeminiStory()" class="bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white px-6 py-3 rounded-full font-bold text-lg shadow-md transition-transform transform hover:scale-105 flex items-center gap-2 mx-auto">
+                <button id="btn-gemini" onclick="generateGeminiStory()" class="bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white px-6 py-3 rounded-full font-bold text-lg shadow-md transition-transform transform fine:hover:scale-105 flex items-center gap-2 mx-auto">
                     <span>✨</span> ¡Crear oración mágica!
                 </button>
                 

@@ -231,7 +231,6 @@
         }
 
         .game-card:hover {
-            transform: translateY(-8px) scale(1.02);
             box-shadow: 0 16px 50px var(--card-shadow-hover);
         }
         .game-card:active { transform: translateY(-2px) scale(0.98); }
@@ -274,7 +273,12 @@
             margin-bottom: 0.75rem;
             transition: transform 0.3s ease;
         }
-        .game-card:hover .icon { transform: scale(1.25) rotate(-10deg); }
+        /* El movimiento de hover solo donde hay puntero fino: en táctil el tap
+           sintetiza :hover y dejaría la tarjeta levantada hasta tocar en otro sitio. */
+        @media (hover: hover) and (pointer: fine) {
+            .game-card:hover { transform: translateY(-8px) scale(1.02); }
+            .game-card:hover .icon { transform: scale(1.25) rotate(-10deg); }
+        }
 
         .game-card .title {
             font-size: 1.25rem;
