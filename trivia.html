@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Necesario para el TTS de Google: /translate_tts responde 404 si la petición
+         trae un Referer con dominio externo (protección anti-hotlinking). -->
+    <meta name="referrer" content="no-referrer">
     <title>Trivia: English Explorer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
@@ -345,11 +348,9 @@
                 window.currentAudio.pause();
             }
             
-            // Google bloquea /translate_tts si el Referer es de otro dominio (anti-hotlinking).
-            // referrerPolicy='no-referrer' hace que el navegador omita ese header en esta petición.
-            window.currentAudio = new Audio();
-            window.currentAudio.referrerPolicy = 'no-referrer';
-            window.currentAudio.src = url;
+            // El Referer se anula desde el <meta name="referrer"> del <head>: sin eso
+            // Google devuelve 404 y caeríamos al TTS del sistema.
+            window.currentAudio = new Audio(url);
             
             // Reproducir. Si por alguna razón falla la conexión, usa la voz del sistema como plan B
             window.currentAudio.play().catch(e => {
