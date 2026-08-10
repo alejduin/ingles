@@ -16,21 +16,24 @@ deduce leyendo el código.
   saturados y las formas flotantes están puestos para ellos. Las skills de diseño
   empujan hacia lo sobrio y editorial: no las dejes "arreglar" esto.
 - **Cada archivo lleva su propio CSS y JS.** No hay módulos compartidos. Un cambio
-  transversal se replica a mano en los 7 archivos.
-- **El vocabulario ya no siempre es inline.** `vocabulario-unidad.html` es una página
-  reutilizable que carga `words-NN.json` por querystring. El resto sigue con arrays
-  inline. Al tocar datos, mira primero cuál de los dos modelos usa el archivo.
+  transversal se replica a mano en cada HTML.
+- **Hay dos páginas reutilizables, y no se fusionan.** `vocabulario-unidad.html` carga
+  `words-NN.json` (traducir una palabra) y `trivia.html` carga `riddles-NN.json` (leer
+  una pista y adivinar). Ejercitan destrezas distintas: recuerdo léxico frente a
+  comprensión lectora. Una unidad nueva es un JSON nuevo, nunca un HTML nuevo.
+  El resto de juegos sigue con arrays inline: mira qué modelo usa el archivo antes
+  de tocar datos.
 - **Se publica en GitHub Pages** (hay `.nojekyll`). Todo tiene que funcionar como
-  ficheros estáticos servidos tal cual.
+  ficheros estáticos servidos tal cual. Ojo: las dos páginas reutilizables usan
+  `fetch`, así que abrirlas con doble clic (`file://`) falla por CORS. Hace falta
+  un servidor local, p. ej. `python3 -m http.server`.
 
 ## Deuda conocida
 
-- **6 de los 7 archivos no tienen `prefers-reduced-motion`.** Solo `index.html` lo
-  implementa. Hay `shake` y `pulse-green` disparándose al fallar y acertar, que es
-  justo el movimiento que afecta a usuarios con sensibilidad vestibular. Es la primera
-  cosa a arreglar en cualquier pasada de motion.
 - `cdn.tailwindcss.com` compila en el navegador y no está pensado para producción.
   Aceptado a cambio de no tener build.
+- Los tres planes de `plans/` están aplicados pero ninguno verificado en un navegador
+  real. Lo pendiente está listado en `plans/README.md`.
 
 ## Skills instaladas y cuándo usar cada una
 
@@ -43,7 +46,7 @@ Manda sobre todo lo que sea animación, transición o easing.
 
 | Skill | Cuándo |
 |---|---|
-| `improve-animations` | Auditar los 7 archivos y sacar un plan priorizado. Solo lectura. Punto de entrada por defecto. |
+| `improve-animations` | Auditar todos los HTML y sacar un plan priorizado. Solo lectura. Punto de entrada por defecto. |
 | `review-animations` | Revisar un cambio concreto ya hecho. Requiere invocación manual. |
 | `animate` | Construir una animación nueva desde cero. |
 | `find-animation-opportunities` | Qué debería animarse y hoy no lo hace. |

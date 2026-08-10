@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "unit": "10",
+    "title": "Unidad 10",
+    "subtitle": "Lee la pista y adivina de qué se habla",
+    "theme": "sky"
+  },
+  "questions": [
+    {
+      "question": "It uses flashing lights when it drives on busy streets.",
+      "correct_answers": ["ambulance"],
+      "incorrect_answers": ["taxi", "carpool"]
+    },
+    {
+      "question": "It can move up and down inside a building.",
+      "correct_answers": ["elevator"],
+      "incorrect_answers": ["subway", "escalator"]
+    },
+    {
+      "question": "It has blades and turns when the wind blows.",
+      "correct_answers": ["wind turbine"],
+      "incorrect_answers": ["solar panel", "helicopter"]
+    },
+    {
+      "question": "It makes solar energy.",
+      "correct_answers": ["solar panel"],
+      "incorrect_answers": ["power plant", "wind farm"]
+    },
+    {
+      "question": "It sends electricity to homes in our town.",
+      "correct_answers": ["power plant"],
+      "incorrect_answers": ["grocery store", "state"]
+    },
+    {
+      "question": "It is when there are too many cars on the road and they cannot move.",
+      "correct_answers": ["traffic jam"],
+      "incorrect_answers": ["carpool", "train"]
+    },
+    {
+      "question": "The doors close after you go inside it to travel underground.",
+      "correct_answers": ["subway"],
+      "incorrect_answers": ["escalator", "taxi"]
+    },
+    {
+      "question": "A place with many wind turbines working together to make energy.",
+      "correct_answers": ["wind farm"],
+      "incorrect_answers": ["solar farm", "town"]
+    },
+    {
+      "question": "It is a big red truck that helps put out fires.",
+      "correct_answers": ["fire engine"],
+      "incorrect_answers": ["ambulance", "train"]
+    },
+    {
+      "question": "It is when people share a ride in one car to go to school or work.",
+      "correct_answers": ["carpool"],
+      "incorrect_answers": ["traffic jam", "subway"]
+    },
+    {
+      "question": "Which of these help us travel? Choose ALL the correct answers.",
+      "correct_answers": ["subway", "train"],
+      "incorrect_answers": ["blade"]
+    },
+    {
+      "question": "Which of these make clean energy? Choose ALL the correct answers.",
+      "correct_answers": ["wind turbine", "solar panel"],
+      "incorrect_answers": ["traffic jam"]
+    }
+  ]
+}

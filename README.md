@@ -14,6 +14,7 @@ A suite of interactive, client-side web applications designed to help Spanish-sp
 | **Trivia Unidad 1** | [`vocabulario-unidad.html?data=words-01.json`](https://alejduin.github.io/ingles/vocabulario-unidad.html?data=words-01.json) | Reusable multiple-choice quiz | Unit 1: Events, Sports, Feelings (-ed), Descriptions (-ing) (26 words) |
 | **Trivia Unidad 2** | [`vocabulario-unidad.html?data=words-02.json`](https://alejduin.github.io/ingles/vocabulario-unidad.html?data=words-02.json) | Reusable multiple-choice quiz | Unit 2: Actions, Nature, Gerunds (27 words) |
 | **Trivia Unidad 10** | [`vocabulario-unidad.html?data=words-10.json`](https://alejduin.github.io/ingles/vocabulario-unidad.html?data=words-10.json) | Reusable multiple-choice quiz | Unit 10: Transport, Energy, Quantifiers, Places (27 words) |
+| **Adivinanzas Unidad 10** | [`trivia.html?data=riddles-10.json`](https://alejduin.github.io/ingles/trivia.html?data=riddles-10.json) | Reusable riddle quiz — read an English clue, pick what it describes | Unit 10 (12 questions) |
 | **Vocabulario Science** | [`vocabulario-science.html`](https://alejduin.github.io/ingles/vocabulario-science.html) | Multiple-choice quiz | Science: Senses, Organ Systems, Food/Nutrients, Teeth (50 words) |
 | **Trivia Science** | [`triviaScience.html`](https://alejduin.github.io/ingles/triviaScience.html) | Multiple-choice quiz | Science: Food/Body, Teeth, Action Verbs, Adjectives (55 words) |
 
@@ -71,7 +72,40 @@ Notes:
 - A plain array `[ {...}, {...} ]` is also accepted for compatibility.
 - The theme can also be forced via `?theme=amber`.
 
-**2. Legacy inline lists** — the older games (`vocabulario.html`, both `*-science.html`, `pares-de-palabras.html`) still keep the vocabulary as an inline `fullVocabList` array:
+**2. Riddle quiz (`trivia.html`)** — same `?data=` mechanism, different content shape. Drop a new `riddles-NN.json` to add a unit (see `riddles-10.json`):
+
+```jsonc
+{
+  "schemaVersion": 1,
+  "meta": {
+    "unit": "10",
+    "title": "Unidad 10",
+    "subtitle": "Lee la pista y adivina de qué se habla",
+    "theme": "sky"
+  },
+  "questions": [
+    {
+      "question": "It uses flashing lights when it drives on busy streets.",
+      "correct_answers": ["ambulance"],          // always an array, even with one
+      "incorrect_answers": ["taxi", "carpool"]
+    },
+    {
+      "question": "Which of these make clean energy? Choose ALL the correct answers.",
+      "correct_answers": ["wind turbine", "solar panel"],
+      "incorrect_answers": ["traffic jam"]
+    }
+  ]
+}
+```
+
+Notes:
+- `correct_answers` is **always an array**. When it holds more than one answer the question switches itself to "choose all that apply": options become toggles and a **Comprobar** button appears. A question is scored right only if the selected set matches exactly.
+- Options shown = correct + incorrect, shuffled. Three total is the norm; the page does not hardcode it.
+- `id` is **not** written by hand, same as `words-NN.json`.
+- A plain array and the older `"correct_answer": "string"` field are both still accepted, so files written before this schema keep working.
+- Validation is strict and the error names the offending question, e.g. *"La pregunta 3 repite «taxi» como correcta e incorrecta a la vez"*.
+
+**3. Legacy inline lists** — the older games (`vocabulario.html`, both `*-science.html`, `pares-de-palabras.html`) still keep the vocabulary as an inline `fullVocabList` array:
 
 ```js
 { id: Number, en: "English", es: "Español", icon: "emoji", cat: "category" }
@@ -99,25 +133,33 @@ The key is intentionally left blank (`""`) and expected to be injected at runtim
 ingles/
 ├── index.html                    # landing page / game menu
 ├── vocabulario.html              # Flashcards Unit 5 (Chart.js dashboard)
-├── trivia.html                   # RETIRED — not linked from index.html, see note below
+├── trivia.html                   # Reusable riddle quiz, reads ?data=<file>.json
 ├── pares-de-palabras.html        # Matching game Unit 5
-├── vocabulario-unidad.html       # Reusable quiz, reads ?data=<file>.json
+├── vocabulario-unidad.html       # Reusable word quiz, reads ?data=<file>.json
 ├── words-01.json                 # Unit 1 vocabulary
 ├── words-02.json                 # Unit 2 vocabulary
 ├── words-05.json                 # Unit 5 vocabulary
 ├── words-10.json                 # Unit 10 vocabulary
+├── riddles-10.json               # Unit 10 riddles
 ├── vocabulario-science.html      # Science quiz (inline vocabulary)
 ├── triviaScience.html            # Science trivia (inline vocabulary)
 └── .nojekyll                     # serve files as-is on GitHub Pages
 ```
 
-Each HTML file is self-contained (HTML + CSS + JS in one file). No shared modules, no build step. `vocabulario-unidad.html` reads its data from the sibling `words-*.json` files.
+Each HTML file is self-contained (HTML + CSS + JS in one file). No shared modules, no build step. `vocabulario-unidad.html` and `trivia.html` read their data from the sibling `words-*.json` / `riddles-*.json` files.
 
-### Retired: `trivia.html`
+### The two reusable pages
 
-Unit 5 now uses the reusable quiz (`vocabulario-unidad.html?data=words-05.json`), like every other unit. `trivia.html` was functionally the same multiple-choice quiz with its vocabulary hardcoded, so keeping both meant maintaining Unit 5 in two places.
+Both read their content from an external JSON chosen with `?data=`, so a new unit means a new JSON file, never a new HTML file.
 
-The file is still in the repository and still works if opened directly — only the link from `index.html` is commented out (the original card markup is preserved in that comment). It is being held until a genuine trivia is built: comprehension questions rather than English→Spanish translation.
+| Page | Activity | Data files |
+|------|----------|------------|
+| `vocabulario-unidad.html` | Translate a single English word into Spanish | `words-NN.json` |
+| `trivia.html` | Read an English clue and pick what it describes | `riddles-NN.json` |
+
+They exercise different skills. The word quiz drills vocabulary recall; the riddle quiz drills reading comprehension, since the answer is only reachable by understanding a whole sentence. Keep them separate rather than merging them.
+
+Both accept `?theme=` to override the palette (`sky`, `amber`, `emerald`, `violet`, `rose`).
 
 ## Deployment
 
@@ -134,8 +176,10 @@ There is no build step or workflow file; GitHub Pages serves the HTML directly. 
 | Files | Brand Color |
 |-------|-------------|
 | `vocabulario.html`, `pares-de-palabras.html` | Amber/Yellow |
-| `vocabulario-unidad.html` (default), `triviaScience.html` | Sky Blue |
+| `vocabulario-unidad.html` (default), `trivia.html` (default), `triviaScience.html` | Sky Blue |
 | `vocabulario-science.html` | Green |
+
+The two reusable pages take their palette from `meta.theme` in the JSON, overridable with `?theme=`. The rest hardcode theirs.
 
 The reusable quiz picks its color from `meta.theme` in the JSON, or from `?theme=` in the URL.
 
