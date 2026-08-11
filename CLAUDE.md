@@ -17,6 +17,10 @@ deduce leyendo el código.
   empujan hacia lo sobrio y editorial: no las dejes "arreglar" esto.
 - **Cada archivo lleva su propio CSS y JS.** No hay módulos compartidos. Un cambio
   transversal se replica a mano en cada HTML.
+- **`index.html` no lleva tarjetas escritas a mano.** Construye el menú y los filtros
+  desde `units.json`. Publicar un juego es añadir una entrada a `games`, nunca editar
+  markup. Esto es deliberado: es lo que permite que un pipeline automatizado (n8n)
+  publique una unidad sin tocar HTML. No vuelvas a meter tarjetas en el HTML.
 - **Hay dos páginas reutilizables, y no se fusionan.** `vocabulario-unidad.html` carga
   `words-NN.json` (traducir una palabra) y `trivia.html` carga `riddles-NN.json` (leer
   una pista y adivinar). Ejercitan destrezas distintas: recuerdo léxico frente a
@@ -24,9 +28,10 @@ deduce leyendo el código.
   El resto de juegos sigue con arrays inline: mira qué modelo usa el archivo antes
   de tocar datos.
 - **Se publica en GitHub Pages** (hay `.nojekyll`). Todo tiene que funcionar como
-  ficheros estáticos servidos tal cual. Ojo: las dos páginas reutilizables usan
-  `fetch`, así que abrirlas con doble clic (`file://`) falla por CORS. Hace falta
-  un servidor local, p. ej. `python3 -m http.server`.
+  ficheros estáticos servidos tal cual. Ojo: `index.html` y las dos páginas
+  reutilizables usan `fetch`, así que abrirlas con doble clic (`file://`) falla por
+  CORS. Hace falta un servidor local, p. ej. `python3 -m http.server`. Las tres
+  muestran un mensaje que lo explica en vez de quedarse en blanco.
 
 ## Deuda conocida
 

@@ -131,7 +131,8 @@ The key is intentionally left blank (`""`) and expected to be injected at runtim
 
 ```
 ingles/
-├── index.html                    # landing page / game menu
+├── index.html                    # landing page, builds its menu from units.json
+├── units.json                    # manifest: every game card and filter
 ├── vocabulario.html              # Flashcards Unit 5 (Chart.js dashboard)
 ├── trivia.html                   # Reusable riddle quiz, reads ?data=<file>.json
 ├── pares-de-palabras.html        # Matching game Unit 5
@@ -147,6 +148,39 @@ ingles/
 ```
 
 Each HTML file is self-contained (HTML + CSS + JS in one file). No shared modules, no build step. `vocabulario-unidad.html` and `trivia.html` read their data from the sibling `words-*.json` / `riddles-*.json` files.
+
+### The menu manifest (`units.json`)
+
+`index.html` holds no game cards. It renders them from `units.json`, so **publishing a game is a data change, not an HTML change** — which is what lets an automated pipeline add a unit without editing markup.
+
+```jsonc
+{
+  "schemaVersion": 1,
+  "categories": [                      // drives the filter buttons
+    { "id": "trivia", "icon": "🎯", "label": "Trivia" }
+  ],
+  "games": [
+    {
+      "title": "Trivia – Unit 5",
+      "href": "vocabulario-unidad.html?data=words-05.json",
+      "icon": "🎯",
+      "iconLabel": "diana",            // optional, for screen readers
+      "desc": "Insectos, adjetivos y el mundo que nos rodea.",
+      "category": "trivia",            // must exist in "categories"
+      "badge": "Trivia",
+      "count": "36 palabras",
+      "theme": "sky",                  // amber | sky | green | violet
+      "recommended": true,             // optional, adds the "¡Empieza aquí!" ribbon
+      "ariaLabel": "..."               // optional, generated from title + desc if absent
+    }
+  ]
+}
+```
+
+Notes:
+- A filter button only appears if at least one game uses that category. An empty filter would blank the screen with no explanation.
+- An unknown `theme` falls back to `sky` rather than rendering an unstyled card.
+- Adding a unit end to end = write `words-NN.json` (and/or `riddles-NN.json`), then append one entry to `games`. Nothing else.
 
 ### The two reusable pages
 

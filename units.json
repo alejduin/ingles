@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "categories": [
+    {
+      "id": "trivia",
+      "icon": "🎯",
+      "label": "Trivia"
+    },
+    {
+      "id": "vocabulario",
+      "icon": "📚",
+      "label": "Vocabulario"
+    },
+    {
+      "id": "juego",
+      "icon": "🃏",
+      "label": "Juego"
+    },
+    {
+      "id": "adivinanzas",
+      "icon": "🕵️",
+      "label": "Adivinanzas"
+    },
+    {
+      "id": "ciencia",
+      "icon": "🔬",
+      "label": "Ciencia"
+    }
+  ],
+  "games": [
+    {
+      "title": "Flashcards – Unit 5",
+      "href": "vocabulario.html",
+      "icon": "📚",
+      "iconLabel": "libros",
+      "desc": "Voltea tarjetas con emojis y aprende palabras de insectos, adjetivos, verbos y más.",
+      "category": "vocabulario",
+      "badge": "Vocabulario",
+      "count": "36 palabras",
+      "theme": "amber",
+      "recommended": true,
+      "ariaLabel": "Jugar Flashcards Unit 5: voltea tarjetas y aprende vocabulario con emojis"
+    },
+    {
+      "title": "Trivia – Unit 5",
+      "href": "vocabulario-unidad.html?data=words-05.json",
+      "icon": "🎯",
+      "iconLabel": "diana",
+      "desc": "Insectos, adjetivos, palabras en -le y el mundo que nos rodea.",
+      "category": "trivia",
+      "badge": "Trivia",
+      "count": "36 palabras",
+      "theme": "sky",
+      "ariaLabel": "Jugar Trivia Unit 5: insectos, adjetivos y naturaleza"
+    },
+    {
+      "title": "Parejas – Unit 5",
+      "href": "pares-de-palabras.html",
+      "icon": "🃏",
+      "iconLabel": "naipes",
+      "desc": "Empareja cada palabra en inglés con su traducción al español. ¡Memoriza y gana!",
+      "category": "juego",
+      "badge": "Juego",
+      "count": "36 pares",
+      "theme": "amber",
+      "ariaLabel": "Jugar Parejas Unit 5: empareja inglés con español"
+    },
+    {
+      "title": "Trivia – Unit 1",
+      "href": "vocabulario-unidad.html?data=words-01.json",
+      "icon": "⚡",
+      "iconLabel": "rayo",
+      "desc": "Deportes, eventos especiales, sentimientos y descripciones.",
+      "category": "trivia",
+      "badge": "Trivia",
+      "count": "26 palabras",
+      "theme": "sky",
+      "ariaLabel": "Jugar Trivia Unit 1: deportes, eventos y sentimientos"
+    },
+    {
+      "title": "Trivia – Unit 2",
+      "href": "vocabulario-unidad.html?data=words-02.json",
+      "icon": "🌿",
+      "iconLabel": "hojas",
+      "desc": "Acciones, naturaleza y palabras con terminación -ing.",
+      "category": "trivia",
+      "badge": "Trivia",
+      "count": "27 palabras",
+      "theme": "sky",
+      "ariaLabel": "Jugar Trivia Unit 2: acciones y naturaleza"
+    },
+    {
+      "title": "Trivia – Unit 10",
+      "href": "vocabulario-unidad.html?data=words-10.json",
+      "icon": "🚆",
+      "iconLabel": "tren",
+      "desc": "Transporte, energía renovable, cuantificadores y lugares.",
+      "category": "trivia",
+      "badge": "Trivia",
+      "count": "27 palabras",
+      "theme": "sky",
+      "ariaLabel": "Jugar Trivia Unit 10: transporte, energía y cuantificadores"
+    },
+    {
+      "title": "Adivinanzas – Unit 10",
+      "href": "trivia.html?data=riddles-10.json",
+      "icon": "🕵️",
+      "iconLabel": "detective",
+      "desc": "Lee una pista en inglés y descubre a qué se refiere. Comprensión, no traducción.",
+      "category": "adivinanzas",
+      "badge": "Adivinanzas",
+      "count": "12 preguntas",
+      "theme": "violet",
+      "ariaLabel": "Jugar Adivinanzas Unit 10: lee la pista en inglés y adivina de qué se habla"
+    },
+    {
+      "title": "Vocabulario – Science",
+      "href": "vocabulario-science.html",
+      "icon": "🔬",
+      "iconLabel": "microscopio",
+      "desc": "Los sentidos, sistemas del cuerpo, alimentos saludables y los dientes.",
+      "category": "ciencia",
+      "badge": "Ciencia",
+      "count": "50 palabras",
+      "theme": "green",
+      "ariaLabel": "Jugar Vocabulario Science: sentidos, cuerpo y nutrición"
+    },
+    {
+      "title": "Trivia – Science",
+      "href": "triviaScience.html",
+      "icon": "🧪",
+      "iconLabel": "tubo de ensayo",
+      "desc": "Comida y nutrición, el cuerpo, los dientes, verbos de acción y adjetivos.",
+      "category": "ciencia",
+      "badge": "Ciencia",
+      "count": "55 palabras",
+      "theme": "green",
+      "ariaLabel": "Jugar Trivia Science: comida, cuerpo y verbos"
+    }
+  ]
+}

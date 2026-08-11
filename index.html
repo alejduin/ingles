@@ -340,13 +340,28 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .game-card:nth-child(1) { animation-delay: 0.1s; }
-        .game-card:nth-child(2) { animation-delay: 0.15s; }
-        .game-card:nth-child(3) { animation-delay: 0.2s; }
-        .game-card:nth-child(4) { animation-delay: 0.25s; }
-        .game-card:nth-child(5) { animation-delay: 0.3s; }
-        .game-card:nth-child(6) { animation-delay: 0.35s; }
-        .game-card:nth-child(7) { animation-delay: 0.4s; }
+        /* El animation-delay escalonado se aplica desde JS al pintar cada tarjeta.
+           Antes estaba aquí como .game-card:nth-child(N), pero .game-card es el <a>
+           y es hijo único de su <li>: :nth-child(1) casaba con todas y el resto de
+           reglas no casaba con ninguna, así que el escalonado nunca ocurrió. */
+
+        .list-error {
+            max-width: 640px;
+            margin: 2rem auto 0;
+            padding: 1.25rem 1.5rem;
+            border-radius: 1rem;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            font-weight: 600;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .list-error[hidden] { display: none; }
+        .list-error code {
+            background: rgba(0,0,0,0.25);
+            padding: 0.1rem 0.4rem;
+            border-radius: 0.4rem;
+        }
 
         @media (prefers-reduced-motion: reduce) {
             .shape { animation: none !important; }
@@ -415,102 +430,23 @@
         </section>
 
         <div class="filters-wrapper">
-            <div class="filters" role="group" aria-label="Filtrar juegos por categoría">
+            <div class="filters" role="group" aria-label="Filtrar juegos por categoría" id="filters">
                 <button class="filter-btn active" data-filter="all" aria-pressed="true">Todos</button>
-                <button class="filter-btn" data-filter="trivia" aria-pressed="false"><span role="img" aria-label="diana">🎯</span> Trivia</button>
-                <button class="filter-btn" data-filter="vocabulario" aria-pressed="false"><span role="img" aria-label="libros">📚</span> Vocabulario</button>
-                <button class="filter-btn" data-filter="juego" aria-pressed="false"><span role="img" aria-label="naipes">🃏</span> Juego</button>
-                <button class="filter-btn" data-filter="adivinanzas" aria-pressed="false"><span role="img" aria-label="detective">🕵️</span> Adivinanzas</button>
-                <button class="filter-btn" data-filter="ciencia" aria-pressed="false"><span role="img" aria-label="microscopio">🔬</span> Ciencia</button>
+                <!-- El resto de filtros se inyecta desde units.json -->
             </div>
         </div>
 
         <h2 class="sr-only">Selecciona un juego</h2>
         <nav aria-label="Juegos de vocabulario" class="games-grid">
-            <ul>
-                <li>
-                    <a href="vocabulario.html" class="game-card amber recommended" data-category="vocabulario" aria-label="Jugar Flashcards Unit 5: voltea tarjetas y aprende vocabulario con emojis">
-                        <span class="recommended-badge" role="img" aria-label="recomendado">🌟 ¡Empieza aquí!</span>
-                        <span class="icon" role="img" aria-label="libros">📚</span>
-                        <span class="title">Flashcards – Unit 5</span>
-                        <span class="desc">Voltea tarjetas con emojis y aprende palabras de insectos, adjetivos, verbos y más.</span>
-                        <span class="badge">Vocabulario</span>
-                        <span class="word-count">36 palabras</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="vocabulario-unidad.html?data=words-05.json" class="game-card sky" data-category="trivia" aria-label="Jugar Trivia Unit 5: insectos, adjetivos y naturaleza">
-                        <span class="icon" role="img" aria-label="diana">🎯</span>
-                        <span class="title">Trivia – Unit 5</span>
-                        <span class="desc">Insectos, adjetivos, palabras en -le y el mundo que nos rodea.</span>
-                        <span class="badge">Trivia</span>
-                        <span class="word-count">36 palabras</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pares-de-palabras.html" class="game-card amber" data-category="juego" aria-label="Jugar Parejas Unit 5: empareja inglés con español">
-                        <span class="icon" role="img" aria-label="naipes">🃏</span>
-                        <span class="title">Parejas – Unit 5</span>
-                        <span class="desc">Empareja cada palabra en inglés con su traducción al español. ¡Memoriza y gana!</span>
-                        <span class="badge">Juego</span>
-                        <span class="word-count">36 pares</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="vocabulario-unidad.html?data=words-01.json" class="game-card sky" data-category="trivia" aria-label="Jugar Trivia Unit 1: deportes, eventos y sentimientos">
-                        <span class="icon" role="img" aria-label="rayo">⚡</span>
-                        <span class="title">Trivia – Unit 1</span>
-                        <span class="desc">Deportes, eventos especiales, sentimientos y descripciones.</span>
-                        <span class="badge">Trivia</span>
-                        <span class="word-count">26 palabras</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="vocabulario-unidad.html?data=words-02.json" class="game-card sky" data-category="trivia" aria-label="Jugar Trivia Unit 2: acciones y naturaleza">
-                        <span class="icon" role="img" aria-label="hojas">🌿</span>
-                        <span class="title">Trivia – Unit 2</span>
-                        <span class="desc">Acciones, naturaleza y palabras con terminación -ing.</span>
-                        <span class="badge">Trivia</span>
-                        <span class="word-count">27 palabras</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="vocabulario-unidad.html?data=words-10.json" class="game-card sky" data-category="trivia" aria-label="Jugar Trivia Unit 10: transporte, energía y cuantificadores">
-                        <span class="icon" role="img" aria-label="tren">🚆</span>
-                        <span class="title">Trivia – Unit 10</span>
-                        <span class="desc">Transporte, energía renovable, cuantificadores y lugares.</span>
-                        <span class="badge">Trivia</span>
-                        <span class="word-count">27 palabras</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="trivia.html?data=riddles-10.json" class="game-card violet" data-category="adivinanzas" aria-label="Jugar Adivinanzas Unit 10: lee la pista en inglés y adivina de qué se habla">
-                        <span class="icon" role="img" aria-label="detective">🕵️</span>
-                        <span class="title">Adivinanzas – Unit 10</span>
-                        <span class="desc">Lee una pista en inglés y descubre a qué se refiere. Comprensión, no traducción.</span>
-                        <span class="badge">Adivinanzas</span>
-                        <span class="word-count">12 preguntas</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="vocabulario-science.html" class="game-card green" data-category="ciencia" aria-label="Jugar Vocabulario Science: sentidos, cuerpo y nutrición">
-                        <span class="icon" role="img" aria-label="microscopio">🔬</span>
-                        <span class="title">Vocabulario – Science</span>
-                        <span class="desc">Los sentidos, sistemas del cuerpo, alimentos saludables y los dientes.</span>
-                        <span class="badge">Ciencia</span>
-                        <span class="word-count">50 palabras</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="triviaScience.html" class="game-card green" data-category="ciencia" aria-label="Jugar Trivia Science: comida, cuerpo y verbos">
-                        <span class="icon" role="img" aria-label="tubo de ensayo">🧪</span>
-                        <span class="title">Trivia – Science</span>
-                        <span class="desc">Comida y nutrición, el cuerpo, los dientes, verbos de acción y adjetivos.</span>
-                        <span class="badge">Ciencia</span>
-                        <span class="word-count">55 palabras</span>
-                    </a>
-                </li>
+            <ul id="game-list">
+                <!-- Las tarjetas se inyectan desde units.json -->
             </ul>
+            <p id="list-error" class="list-error" hidden>
+                No pude cargar la lista de juegos (<code>units.json</code>).
+                Si abriste esta página con doble clic, el navegador bloquea la lectura
+                de archivos locales: usa un servidor, por ejemplo
+                <code>python3 -m http.server</code>.
+            </p>
         </nav>
 
     </main>
@@ -520,32 +456,158 @@
         Abre cualquier juego desde esta página o directamente desde los archivos.
     </footer>
 
+    <!--
+        FORMATO DE units.json
+
+        Este menú no lleva tarjetas escritas a mano: se construye desde units.json.
+        Publicar un juego nuevo = añadir una entrada a "games". No se toca este HTML.
+
+        {
+          "schemaVersion": 1,
+          "categories": [                       // define los botones de filtro
+            { "id": "trivia", "icon": "🎯", "label": "Trivia" }
+          ],
+          "games": [
+            {
+              "title": "Trivia – Unit 5",
+              "href": "vocabulario-unidad.html?data=words-05.json",
+              "icon": "🎯",
+              "iconLabel": "diana",             // opcional, para lectores de pantalla
+              "desc": "Insectos, adjetivos y el mundo que nos rodea.",
+              "category": "trivia",             // debe existir en "categories"
+              "badge": "Trivia",
+              "count": "36 palabras",
+              "theme": "sky",                   // amber | sky | green | violet
+              "recommended": true,              // opcional, pone el "¡Empieza aquí!"
+              "ariaLabel": "..."                // opcional, se genera si falta
+            }
+          ]
+        }
+    -->
+
     <script>
         (function() {
             'use strict';
-            var filterButtons = document.querySelectorAll('.filter-btn');
-            var gameCards = document.querySelectorAll('.game-card');
 
-            filterButtons.forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    var filter = btn.dataset.filter;
+            var TEMAS = ['amber', 'sky', 'green', 'violet'];
+            var lista = document.getElementById('game-list');
+            var filtros = document.getElementById('filters');
+            var cajaError = document.getElementById('list-error');
 
-                    filterButtons.forEach(function(b) {
-                        b.classList.remove('active');
-                        b.setAttribute('aria-pressed', 'false');
-                    });
-                    btn.classList.add('active');
-                    btn.setAttribute('aria-pressed', 'true');
+            function mostrarError() {
+                cajaError.hidden = false;
+            }
 
-                    gameCards.forEach(function(card) {
-                        if (filter === 'all' || card.dataset.category === filter) {
-                            card.classList.remove('hidden');
-                        } else {
-                            card.classList.add('hidden');
-                        }
+            function crearTarjeta(juego, indice) {
+                var a = document.createElement('a');
+                var tema = TEMAS.indexOf(juego.theme) !== -1 ? juego.theme : 'sky';
+
+                a.className = 'game-card ' + tema + (juego.recommended ? ' recommended' : '');
+                a.href = juego.href;
+                a.dataset.category = juego.category || '';
+                a.setAttribute('aria-label', juego.ariaLabel || (juego.title + ': ' + juego.desc));
+
+                // El escalonado se aplica aquí y no en CSS: .game-card es hijo único
+                // de su <li>, así que :nth-child() casaba con todas las tarjetas a la
+                // vez. Además así no hay tope en el número de juegos.
+                a.style.animationDelay = (0.1 + indice * 0.05).toFixed(2) + 's';
+
+                if (juego.recommended) {
+                    a.appendChild(crearSpan('recommended-badge', '🌟 ¡Empieza aquí!', 'recomendado'));
+                }
+                a.appendChild(crearSpan('icon', juego.icon, juego.iconLabel || juego.title));
+                a.appendChild(crearSpan('title', juego.title));
+                a.appendChild(crearSpan('desc', juego.desc));
+                a.appendChild(crearSpan('badge', juego.badge));
+                a.appendChild(crearSpan('word-count', juego.count));
+
+                var li = document.createElement('li');
+                li.appendChild(a);
+                return li;
+            }
+
+            function crearSpan(clase, texto, etiquetaImagen) {
+                var s = document.createElement('span');
+                s.className = clase;
+                s.textContent = texto || '';
+                if (etiquetaImagen) {
+                    s.setAttribute('role', 'img');
+                    s.setAttribute('aria-label', etiquetaImagen);
+                }
+                return s;
+            }
+
+            function crearFiltro(categoria) {
+                var b = document.createElement('button');
+                b.className = 'filter-btn';
+                b.dataset.filter = categoria.id;
+                b.setAttribute('aria-pressed', 'false');
+                if (categoria.icon) {
+                    b.appendChild(crearSpan('', categoria.icon, categoria.label));
+                    b.appendChild(document.createTextNode(' '));
+                }
+                b.appendChild(document.createTextNode(categoria.label || categoria.id));
+                return b;
+            }
+
+            function conectarFiltros() {
+                var botones = filtros.querySelectorAll('.filter-btn');
+                var tarjetas = lista.querySelectorAll('.game-card');
+
+                botones.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var filtro = btn.dataset.filter;
+
+                        botones.forEach(function(b) {
+                            b.classList.remove('active');
+                            b.setAttribute('aria-pressed', 'false');
+                        });
+                        btn.classList.add('active');
+                        btn.setAttribute('aria-pressed', 'true');
+
+                        tarjetas.forEach(function(card) {
+                            if (filtro === 'all' || card.dataset.category === filtro) {
+                                card.classList.remove('hidden');
+                            } else {
+                                card.classList.add('hidden');
+                            }
+                        });
                     });
                 });
-            });
+            }
+
+            function pintar(datos) {
+                var juegos = Array.isArray(datos) ? datos : datos.games;
+                if (!Array.isArray(juegos) || juegos.length === 0) {
+                    throw new Error('units.json no trae un array "games" con contenido.');
+                }
+
+                // Solo se muestran filtros de categorías que tienen algún juego:
+                // un filtro vacío deja la pantalla en blanco sin explicar por qué.
+                var usadas = {};
+                juegos.forEach(function(j) { usadas[j.category] = true; });
+
+                ((datos && datos.categories) || [])
+                    .filter(function(c) { return usadas[c.id]; })
+                    .forEach(function(c) { filtros.appendChild(crearFiltro(c)); });
+
+                var fragmento = document.createDocumentFragment();
+                juegos.forEach(function(j, i) { fragmento.appendChild(crearTarjeta(j, i)); });
+                lista.appendChild(fragmento);
+
+                conectarFiltros();
+            }
+
+            fetch('units.json', { cache: 'no-cache' })
+                .then(function(r) {
+                    if (!r.ok) { throw new Error('HTTP ' + r.status); }
+                    return r.json();
+                })
+                .then(pintar)
+                .catch(function(err) {
+                    console.error('No se pudo cargar units.json:', err);
+                    mostrarError();
+                });
         })();
     </script>
 
