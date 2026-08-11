@@ -1,6 +1,6 @@
 {
   "prueba": "commit-a-github",
-  "rama": "create",
+  "rama": "update",
   "generadoPor": "n8n",
-  "nota": "Fichero temporal de verificacion. Se puede borrar."
+  "nota": "Si ves rama=update, el upsert funciona. Fichero temporal, se puede borrar."
 }
