@@ -24,7 +24,7 @@
       ],
       "incorrect_answers": [
         "insects",
-        "shooting star"
+        "leaping"
       ]
     },
     {
@@ -34,7 +34,7 @@
       ],
       "incorrect_answers": [
         "escaped",
-        "insects"
+        "shooting star"
       ]
     },
     {
@@ -43,7 +43,7 @@
         "insects"
       ],
       "incorrect_answers": [
-        "shooting star",
+        "escaped",
         "leaping"
       ]
     }
