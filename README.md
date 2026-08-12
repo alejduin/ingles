@@ -10,10 +10,11 @@ A suite of interactive, client-side web applications designed to help Spanish-sp
 |------|------|------|------------|
 | **Vocabulario** | [`vocabulario.html`](https://alejduin.github.io/ingles/vocabulario.html) | Flashcard dashboard with flip cards and progress chart | Unit 5: Insects, Adjectives, -le words, Verbs, Nature (36 words) |
 | **Pares de Palabras** | [`pares-de-palabras.html`](https://alejduin.github.io/ingles/pares-de-palabras.html) | Memory-style matching game (English ↔ Spanish cards) | Unit 5 (36 pairs) |
-| **Trivia Unidad 5** | [`vocabulario-unidad.html?data=words-05.json`](https://alejduin.github.io/ingles/vocabulario-unidad.html?data=words-05.json) | Reusable multiple-choice quiz | Unit 5: Insects, Adjectives, -le words, Verbs, Nature (36 words) |
+| **Trivia Unidad 5** | [`vocabulario-unidad.html?data=words-05.json`](https://alejduin.github.io/ingles/vocabulario-unidad.html?data=words-05.json) | Reusable multiple-choice quiz | Unit 5: Adjectives, Colors, Animals, Nature, Clothing, Verbs (89 words) |
 | **Trivia Unidad 1** | [`vocabulario-unidad.html?data=words-01.json`](https://alejduin.github.io/ingles/vocabulario-unidad.html?data=words-01.json) | Reusable multiple-choice quiz | Unit 1: Events, Sports, Feelings (-ed), Descriptions (-ing) (26 words) |
 | **Trivia Unidad 2** | [`vocabulario-unidad.html?data=words-02.json`](https://alejduin.github.io/ingles/vocabulario-unidad.html?data=words-02.json) | Reusable multiple-choice quiz | Unit 2: Actions, Nature, Gerunds (27 words) |
 | **Trivia Unidad 10** | [`vocabulario-unidad.html?data=words-10.json`](https://alejduin.github.io/ingles/vocabulario-unidad.html?data=words-10.json) | Reusable multiple-choice quiz | Unit 10: Transport, Energy, Quantifiers, Places (27 words) |
+| **Adivinanzas Unidad 5** | [`trivia.html?data=riddles-05.json`](https://alejduin.github.io/ingles/trivia.html?data=riddles-05.json) | Reusable riddle quiz — read an English clue, pick what it describes | Unit 5 (12 questions) |
 | **Adivinanzas Unidad 10** | [`trivia.html?data=riddles-10.json`](https://alejduin.github.io/ingles/trivia.html?data=riddles-10.json) | Reusable riddle quiz — read an English clue, pick what it describes | Unit 10 (12 questions) |
 | **Vocabulario Science** | [`vocabulario-science.html`](https://alejduin.github.io/ingles/vocabulario-science.html) | Multiple-choice quiz | Science: Senses, Organ Systems, Food/Nutrients, Teeth (50 words) |
 | **Trivia Science** | [`triviaScience.html`](https://alejduin.github.io/ingles/triviaScience.html) | Multiple-choice quiz | Science: Food/Body, Teeth, Action Verbs, Adjectives (55 words) |
@@ -141,6 +142,7 @@ ingles/
 ├── words-02.json                 # Unit 2 vocabulary
 ├── words-05.json                 # Unit 5 vocabulary
 ├── words-10.json                 # Unit 10 vocabulary
+├── riddles-05.json               # Unit 5 riddles
 ├── riddles-10.json               # Unit 10 riddles
 ├── vocabulario-science.html      # Science quiz (inline vocabulary)
 ├── triviaScience.html            # Science trivia (inline vocabulary)
@@ -204,6 +206,18 @@ git add -A && git commit -m "your message" && git push
 ```
 
 There is no build step or workflow file; GitHub Pages serves the HTML directly. The `.nojekyll` file disables Jekyll preprocessing.
+
+### Publishing a unit from a phone
+
+New units don't have to be written by hand. A Telegram bot backed by n8n reads photographs of the textbook pages and commits the JSON:
+
+```
+iniciar  →  send the photos  →  procesar  →  confirm  →  committed
+```
+
+It writes `words-NN.json`, `riddles-NN.json`, and merges the new cards into `units.json`. The unit number is read from the printed page; `procesar 5` forces it when it can't be found.
+
+`words-05.json` and `riddles-05.json` were produced this way — which is why their word counts and categories differ in style from the hand-written `words-01`/`02`/`10`. See `CLAUDE.md` for the pipeline's architecture and its failure modes.
 
 ## Color Themes
 

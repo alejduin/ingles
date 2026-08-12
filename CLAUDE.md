@@ -33,12 +33,83 @@ deduce leyendo el código.
   CORS. Hace falta un servidor local, p. ej. `python3 -m http.server`. Las tres
   muestran un mensaje que lo explica en vez de quedarse en blanco.
 
+## El pipeline de publicación (n8n)
+
+Publicar una unidad ya no se hace a mano. Hay un bot de Telegram que lee fotos de las
+páginas del libro y commitea los JSON. Está vivo y en producción.
+
+```
+iniciar → fotos → procesar → [Publicar] → commit en main
+```
+
+Cuatro workflows en n8n Cloud, cada uno con una responsabilidad:
+
+| Workflow | ID | Qué hace |
+|---|---|---|
+| Publish a unit from Telegram photos | `baKnSgFrPpZ7YwFI` | El bot. Sesión, comandos, confirmación |
+| Extract vocabulary from textbook pages | `1e45BjwNQija5AP8` | Foto → `{words[], riddles[], unit}` |
+| Publish a unit to the website | `4ZasRhexqEjShEgx` | Monta los JSON y **fusiona** `units.json` |
+| Commit files to GitHub | `ekZ4xN3i6smOlNor` | Escribe ficheros vía API de contenidos |
+
+Decisiones que no son obvias leyendo el canvas:
+
+- **La lista blanca vive en `additionalFields.userIds` del trigger**, no en un nodo IF.
+  Así el workflow ni arranca para otro usuario. El repo es público: sin eso, el bot es
+  una vía de escritura abierta para cualquiera que dé con él.
+- **La sesión se guarda en la Data Table `sesion_paginas`** (`chatId`, `fileId`,
+  `messageId`). Telegram dispara el trigger **una vez por foto**, en ejecuciones
+  separadas: no hay otra forma de que una ejecución vea las fotos de las otras.
+  Se ordena por `messageId` porque un álbum entra en paralelo y el orden de inserción
+  no es fiable.
+- **`publicar-unidad` LEE `units.json` antes de escribir y fusiona por `href`.**
+  Si la lectura falla con algo que no sea un 404, aborta a propósito: publicar entonces
+  sobrescribiría el menú entero con una plantilla vacía.
+- **Solo se borra la sesión tras publicar con éxito.** Si algo falla, las fotos siguen
+  ahí y reintentar es escribir `procesar` otra vez.
+- **Un commit por fichero.** Es cómo funciona la API de contenidos de GitHub. Tres
+  ficheros, tres commits.
+
+### Dos trampas de n8n que ya nos costaron una tarde
+
+1. **Publicar es obligatorio tras CADA cambio.** El borrador y la versión activa son
+   cosas distintas: editas, guardas, y la ejecución sigue usando el snapshot anterior.
+   Puedes estar viendo en pantalla una configuración correcta mientras corre otra.
+   Síntoma: arreglas algo y el fallo no cambia.
+2. **Dos credenciales del mismo tipo dejan el nodo vacío.** n8n autoasigna por descarte;
+   con dos candidatas no elige ninguna y no avisa. Se manifiesta como
+   *"Authorization failed"* en un nodo que parece bien configurado. `get_workflow_details`
+   **no devuelve las credenciales**, así que no se puede verificar por API: hay que
+   abrir el nodo. Mantén una sola credencial por tipo.
+
+### Estado del modelo
+
+`Extraer pagina` lleva `needsFallback` y el **orden de los submodelos ES la preferencia**.
+Hoy: **Google Vertex** en el índice 0 y Claude Sonnet 5 en el 1. Se pasó a Vertex porque
+la cuenta de Anthropic quedó bloqueada y la Gemini API por clave devolvía 429 con dos
+imágenes. De propina Vertex es mejor para privacidad: no usa contenido de clientes para
+entrenar, y aquí se procesan fotos del cuaderno de un niño.
+
+El prompt del extractor encierra lo aprendido a base de resultados malos: ignora lo
+escrito a mano, no completa texto cortado, exige que cada palabra sea **traducible por sí
+sola** (eso mató `-ing`, `was`, `theme`), exige que cada adivinanza **se entienda sola**
+(eso mató *"What is the theme of this poem?"*), y cuenta las palabras que se practican
+dentro de un ejercicio pero no el enunciado. Esa última regla subió la cobertura de 16 a
+26 sobre 36. No la relajes sin volver a medir.
+
 ## Deuda conocida
 
 - `cdn.tailwindcss.com` compila en el navegador y no está pensado para producción.
   Aceptado a cambio de no tener build.
 - Los tres planes de `plans/` están aplicados pero ninguno verificado en un navegador
   real. Lo pendiente está listado en `plans/README.md`.
+- `words-05.json` tiene 89 palabras, más del doble que las unidades escritas a mano.
+  Es todo contenido legítimo de la unidad, pero es un cuestionario largo. Decisión
+  consciente de dejarlo así por ahora.
+- Quedan cuatro pares base/gerundio duplicados en `words-05.json` (`write`/`writing`,
+  `shine`/`shining`, `leap`/`leaping`, `escaped`/`escaping`). El dedup del extractor solo
+  cubre `+s`/`+es`.
+- En `pdf-a-datos` hay un nodo de Gemini API desconectado a propósito, por si hay que
+  volver a él. Genera tres avisos de validación en cada guardado.
 
 ## Skills instaladas y cuándo usar cada una
 
