@@ -3,56 +3,191 @@
   "meta": {
     "unit": "5",
     "title": "Unidad 5",
-    "subtitle": "Insectos, adjetivos, terminación -le y el mundo que nos rodea",
+    "subtitle": "palabras terminadas en -le, ropa, naturaleza",
     "theme": "sky"
   },
   "categories": [
-    { "name": "Insectos", "label": "Insectos y Animales (Insects)", "icon": "🐞" },
-    { "name": "Adjetivos", "label": "Adjetivos: Cómo son las cosas", "icon": "🌈" },
-    { "name": "Terminación -le", "label": "Palabras terminadas en -le", "icon": "🫧" },
-    { "name": "Verbos", "label": "Verbos: Qué hacen los bichos", "icon": "🕊️" },
-    { "name": "Naturaleza", "label": "Naturaleza y el mundo que nos rodea", "icon": "🌿" }
+    {
+      "name": "palabras terminadas en -le",
+      "label": "palabras terminadas en -le"
+    },
+    {
+      "name": "ropa",
+      "label": "ropa"
+    },
+    {
+      "name": "naturaleza",
+      "label": "naturaleza"
+    },
+    {
+      "name": "animales",
+      "label": "animales"
+    },
+    {
+      "name": "acciones",
+      "label": "acciones"
+    },
+    {
+      "name": "espacio",
+      "label": "espacio"
+    },
+    {
+      "name": "gramática (pasado continuo)",
+      "label": "gramática (pasado continuo)"
+    },
+    {
+      "name": "insectos",
+      "label": "insectos"
+    },
+    {
+      "name": "alimentos",
+      "label": "alimentos"
+    },
+    {
+      "name": "literatura",
+      "label": "literatura"
+    }
   ],
   "words": [
-    { "en": "ladybug", "es": "mariquita", "icon": "🐞", "cat": "Insectos" },
-    { "en": "cricket", "es": "grillo", "icon": "🦗", "cat": "Insectos" },
-    { "en": "grasshopper", "es": "saltamontes", "icon": "🦗", "cat": "Insectos" },
-    { "en": "beetle", "es": "escarabajo", "icon": "🪲", "cat": "Insectos" },
-    { "en": "katydid", "es": "esperanza", "icon": "🍃", "cat": "Insectos" },
-    { "en": "bee", "es": "abeja", "icon": "🐝", "cat": "Insectos" },
-    { "en": "butterfly", "es": "mariposa", "icon": "🦋", "cat": "Insectos" },
-    { "en": "kangaroo", "es": "canguro", "icon": "🦘", "cat": "Insectos" },
-    { "en": "turtle", "es": "tortuga", "icon": "🐢", "cat": "Insectos" },
-
-    { "en": "colorful", "es": "colorido", "icon": "🌈", "cat": "Adjetivos" },
-    { "en": "beautiful", "es": "hermoso", "icon": "✨", "cat": "Adjetivos" },
-    { "en": "quick", "es": "rápido", "icon": "⚡", "cat": "Adjetivos" },
-    { "en": "noisy", "es": "ruidoso", "icon": "🔊", "cat": "Adjetivos" },
-    { "en": "ugly", "es": "feo", "icon": "🧟", "cat": "Adjetivos" },
-    { "en": "large / big", "es": "grande", "icon": "🐘", "cat": "Adjetivos" },
-    { "en": "little / tiny", "es": "pequeño", "icon": "🐁", "cat": "Adjetivos" },
-    { "en": "colors", "es": "colores", "icon": "🎨", "cat": "Adjetivos" },
-
-    { "en": "staple", "es": "grapa", "icon": "🖇️", "cat": "Terminación -le" },
-    { "en": "single", "es": "único / solo", "icon": "1️⃣", "cat": "Terminación -le" },
-    { "en": "article", "es": "artículo", "icon": "📰", "cat": "Terminación -le" },
-    { "en": "handle", "es": "mango / asa", "icon": "🚪", "cat": "Terminación -le" },
-    { "en": "gentle", "es": "suave / gentil", "icon": "🧸", "cat": "Terminación -le" },
-    { "en": "bubble", "es": "burbuja", "icon": "🫧", "cat": "Terminación -le" },
-
-    { "en": "fly", "es": "volar", "icon": "🕊️", "cat": "Verbos" },
-    { "en": "hop / jump", "es": "saltar", "icon": "🦘", "cat": "Verbos" },
-    { "en": "make noise", "es": "hacer ruido", "icon": "🥁", "cat": "Verbos" },
-    { "en": "sit", "es": "sentarse", "icon": "🪑", "cat": "Verbos" },
-    { "en": "sleep", "es": "dormir", "icon": "😴", "cat": "Verbos" },
-    { "en": "write / read", "es": "escribir / leer", "icon": "📖", "cat": "Verbos" },
-    { "en": "play / sing", "es": "jugar / cantar", "icon": "🎤", "cat": "Verbos" },
-    { "en": "buzz", "es": "zumbar", "icon": "🐝", "cat": "Verbos" },
-
-    { "en": "thicket", "es": "matorral", "icon": "🌿", "cat": "Naturaleza" },
-    { "en": "raisin", "es": "pasa", "icon": "🍇", "cat": "Naturaleza" },
-    { "en": "poem / poet", "es": "poema / poeta", "icon": "✍️", "cat": "Naturaleza" },
-    { "en": "grass", "es": "césped", "icon": "🌱", "cat": "Naturaleza" },
-    { "en": "breeze", "es": "brisa", "icon": "🌬️", "cat": "Naturaleza" }
+    {
+      "en": "beetle",
+      "es": "escarabajo",
+      "cat": "palabras terminadas en -le"
+    },
+    {
+      "en": "staple",
+      "es": "grapa",
+      "cat": "palabras terminadas en -le"
+    },
+    {
+      "en": "single",
+      "es": "individual",
+      "cat": "palabras terminadas en -le"
+    },
+    {
+      "en": "article",
+      "es": "artículo",
+      "cat": "palabras terminadas en -le"
+    },
+    {
+      "en": "handle",
+      "es": "manija",
+      "cat": "palabras terminadas en -le"
+    },
+    {
+      "en": "gentle",
+      "es": "suave",
+      "cat": "palabras terminadas en -le"
+    },
+    {
+      "en": "bubble",
+      "es": "burbuja",
+      "cat": "palabras terminadas en -le"
+    },
+    {
+      "en": "skirt",
+      "es": "falda",
+      "cat": "ropa"
+    },
+    {
+      "en": "flower",
+      "es": "flor",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "cardigan",
+      "es": "rebeca",
+      "cat": "ropa"
+    },
+    {
+      "en": "insects",
+      "es": "insectos",
+      "cat": "animales"
+    },
+    {
+      "en": "escaped",
+      "es": "escapado / huyó",
+      "cat": "acciones"
+    },
+    {
+      "en": "shooting star",
+      "es": "estrella fugaz",
+      "cat": "espacio"
+    },
+    {
+      "en": "leaping",
+      "es": "saltando",
+      "cat": "acciones"
+    },
+    {
+      "en": "was",
+      "es": "estaba (singular)",
+      "cat": "gramática (pasado continuo)"
+    },
+    {
+      "en": "were",
+      "es": "estaba/estaban (plural)",
+      "cat": "gramática (pasado continuo)"
+    },
+    {
+      "en": "-ing",
+      "es": "terminación para verbos en progreso",
+      "cat": "gramática (pasado continuo)"
+    },
+    {
+      "en": "ladybug",
+      "es": "mariquita",
+      "cat": "insectos"
+    },
+    {
+      "en": "cricket",
+      "es": "grillo",
+      "cat": "insectos"
+    },
+    {
+      "en": "grasshopper",
+      "es": "saltamontes",
+      "cat": "insectos"
+    },
+    {
+      "en": "katydid",
+      "es": "esperanza (insecto)",
+      "cat": "insectos"
+    },
+    {
+      "en": "bee",
+      "es": "abeja",
+      "cat": "insectos"
+    },
+    {
+      "en": "butterfly",
+      "es": "mariposa",
+      "cat": "insectos"
+    },
+    {
+      "en": "thicket",
+      "es": "matorral",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "kangaroo",
+      "es": "canguro",
+      "cat": "animales"
+    },
+    {
+      "en": "raisin",
+      "es": "pasa",
+      "cat": "alimentos"
+    },
+    {
+      "en": "insect",
+      "es": "insecto",
+      "cat": "animales"
+    },
+    {
+      "en": "theme",
+      "es": "tema",
+      "cat": "literatura"
+    }
   ]
 }
