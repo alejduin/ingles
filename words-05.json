@@ -3,111 +3,61 @@
   "meta": {
     "unit": "5",
     "title": "Unidad 5",
-    "subtitle": "palabras terminadas en -le, ropa, naturaleza",
+    "subtitle": "animales, verbos, espacio",
     "theme": "sky"
   },
   "categories": [
-    {
-      "name": "palabras terminadas en -le",
-      "label": "palabras terminadas en -le"
-    },
-    {
-      "name": "ropa",
-      "label": "ropa"
-    },
-    {
-      "name": "naturaleza",
-      "label": "naturaleza"
-    },
     {
       "name": "animales",
       "label": "animales"
     },
     {
-      "name": "acciones",
-      "label": "acciones"
+      "name": "verbos",
+      "label": "verbos"
     },
     {
       "name": "espacio",
       "label": "espacio"
     },
     {
-      "name": "gramática (pasado continuo)",
-      "label": "gramática (pasado continuo)"
+      "name": "acciones",
+      "label": "acciones"
     },
     {
       "name": "insectos",
       "label": "insectos"
     },
     {
-      "name": "alimentos",
-      "label": "alimentos"
+      "name": "naturaleza",
+      "label": "naturaleza"
     },
     {
-      "name": "literatura",
-      "label": "literatura"
+      "name": "comida",
+      "label": "comida"
+    },
+    {
+      "name": "ropa",
+      "label": "ropa"
+    },
+    {
+      "name": "objetos",
+      "label": "objetos"
+    },
+    {
+      "name": "adjetivos",
+      "label": "adjetivos"
     }
   ],
   "words": [
     {
-      "en": "beetle",
-      "es": "escarabajo",
-      "cat": "palabras terminadas en -le"
-    },
-    {
-      "en": "staple",
-      "es": "grapa",
-      "cat": "palabras terminadas en -le"
-    },
-    {
-      "en": "single",
-      "es": "individual",
-      "cat": "palabras terminadas en -le"
-    },
-    {
-      "en": "article",
-      "es": "artículo",
-      "cat": "palabras terminadas en -le"
-    },
-    {
-      "en": "handle",
-      "es": "manija",
-      "cat": "palabras terminadas en -le"
-    },
-    {
-      "en": "gentle",
-      "es": "suave",
-      "cat": "palabras terminadas en -le"
-    },
-    {
-      "en": "bubble",
-      "es": "burbuja",
-      "cat": "palabras terminadas en -le"
-    },
-    {
-      "en": "skirt",
-      "es": "falda",
-      "cat": "ropa"
-    },
-    {
-      "en": "flower",
-      "es": "flor",
-      "cat": "naturaleza"
-    },
-    {
-      "en": "cardigan",
-      "es": "rebeca",
-      "cat": "ropa"
-    },
-    {
-      "en": "insects",
-      "es": "insectos",
+      "en": "insect",
+      "es": "insecto",
       "cat": "animales"
     },
     {
       "en": "escaped",
-      "es": "escapado / huyó",
-      "cat": "acciones"
+      "es": "escapó",
+      "cat": "verbos"
     },
     {
       "en": "shooting star",
@@ -118,21 +68,6 @@
       "en": "leaping",
       "es": "saltando",
       "cat": "acciones"
-    },
-    {
-      "en": "was",
-      "es": "estaba (singular)",
-      "cat": "gramática (pasado continuo)"
-    },
-    {
-      "en": "were",
-      "es": "estaba/estaban (plural)",
-      "cat": "gramática (pasado continuo)"
-    },
-    {
-      "en": "-ing",
-      "es": "terminación para verbos en progreso",
-      "cat": "gramática (pasado continuo)"
     },
     {
       "en": "ladybug",
@@ -147,6 +82,11 @@
     {
       "en": "grasshopper",
       "es": "saltamontes",
+      "cat": "insectos"
+    },
+    {
+      "en": "beetle",
+      "es": "escarabajo",
       "cat": "insectos"
     },
     {
@@ -177,17 +117,62 @@
     {
       "en": "raisin",
       "es": "pasa",
-      "cat": "alimentos"
+      "cat": "comida"
     },
     {
-      "en": "insect",
-      "es": "insecto",
+      "en": "insects",
+      "es": "insectos",
       "cat": "animales"
     },
     {
-      "en": "theme",
-      "es": "tema",
-      "cat": "literatura"
+      "en": "skirt",
+      "es": "falda",
+      "cat": "ropa"
+    },
+    {
+      "en": "flower",
+      "es": "flor",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "jacket",
+      "es": "chaqueta",
+      "cat": "ropa"
+    },
+    {
+      "en": "ant",
+      "es": "hormiga",
+      "cat": "animales"
+    },
+    {
+      "en": "staple",
+      "es": "grapa",
+      "cat": "objetos"
+    },
+    {
+      "en": "single",
+      "es": "único/individual",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "article",
+      "es": "artículo",
+      "cat": "objetos"
+    },
+    {
+      "en": "handle",
+      "es": "mango/manija",
+      "cat": "objetos"
+    },
+    {
+      "en": "gentle",
+      "es": "gentil/amable",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "bubble",
+      "es": "burbuja",
+      "cat": "objetos"
     }
   ]
 }
