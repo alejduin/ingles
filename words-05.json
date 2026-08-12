@@ -3,67 +3,233 @@
   "meta": {
     "unit": "5",
     "title": "Unidad 5",
-    "subtitle": "objetos, cantidad, adjetivos",
+    "subtitle": "adjetivos, colores, animales",
     "theme": "sky"
   },
   "categories": [
     {
-      "name": "objetos",
-      "label": "objetos"
-    },
-    {
-      "name": "cantidad",
-      "label": "cantidad"
-    },
-    {
       "name": "adjetivos",
       "label": "adjetivos"
+    },
+    {
+      "name": "colores",
+      "label": "colores"
     },
     {
       "name": "animales",
       "label": "animales"
     },
     {
+      "name": "naturaleza",
+      "label": "naturaleza"
+    },
+    {
       "name": "ropa",
       "label": "ropa"
     },
     {
-      "name": "objetos escolares",
-      "label": "objetos escolares"
+      "name": "lugares",
+      "label": "lugares"
     },
     {
-      "name": "naturaleza",
-      "label": "naturaleza"
+      "name": "anatomía animal",
+      "label": "anatomía animal"
+    },
+    {
+      "name": "objetos",
+      "label": "objetos"
+    },
+    {
+      "name": "verbos",
+      "label": "verbos"
+    },
+    {
+      "name": "sustantivos",
+      "label": "sustantivos"
     },
     {
       "name": "acciones",
       "label": "acciones"
     },
     {
-      "name": "espacio",
-      "label": "espacio"
+      "name": "deportes",
+      "label": "deportes"
     },
     {
       "name": "insectos",
       "label": "insectos"
     },
     {
+      "name": "tamaño",
+      "label": "tamaño"
+    },
+    {
+      "name": "estados",
+      "label": "estados"
+    },
+    {
       "name": "comida",
       "label": "comida"
+    },
+    {
+      "name": "accesorios",
+      "label": "accesorios"
+    },
+    {
+      "name": "espacio",
+      "label": "espacio"
     }
   ],
   "words": [
     {
-      "en": "staple",
-      "es": "grapa",
-      "icon": "📎",
-      "cat": "objetos"
+      "en": "small",
+      "es": "pequeño",
+      "icon": "🤏",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "red",
+      "es": "rojo",
+      "icon": "🔴",
+      "cat": "colores"
+    },
+    {
+      "en": "ladybug",
+      "es": "mariquita",
+      "icon": "🐞",
+      "cat": "animales"
+    },
+    {
+      "en": "leaf",
+      "es": "hoja",
+      "icon": "🍃",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "big",
+      "es": "grande",
+      "icon": "🐘",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "green",
+      "es": "verde",
+      "icon": "🟢",
+      "cat": "colores"
+    },
+    {
+      "en": "grasshopper",
+      "es": "saltamontes",
+      "icon": "🦗",
+      "cat": "animales"
+    },
+    {
+      "en": "brown",
+      "es": "marrón",
+      "icon": "🟤",
+      "cat": "colores"
+    },
+    {
+      "en": "large",
+      "es": "grande",
+      "icon": "🏢",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "bee",
+      "es": "abeja",
+      "icon": "🐝",
+      "cat": "animales"
+    },
+    {
+      "en": "black",
+      "es": "negro",
+      "icon": "⚫",
+      "cat": "colores"
+    },
+    {
+      "en": "yellow",
+      "es": "amarillo",
+      "icon": "🟡",
+      "cat": "colores"
+    },
+    {
+      "en": "dress",
+      "es": "vestido",
+      "icon": "👗",
+      "cat": "ropa"
+    },
+    {
+      "en": "butterfly",
+      "es": "mariposa",
+      "icon": "🦋",
+      "cat": "animales"
+    },
+    {
+      "en": "blue",
+      "es": "azul",
+      "icon": "🔵",
+      "cat": "colores"
+    },
+    {
+      "en": "purple",
+      "es": "morado",
+      "icon": "🟣",
+      "cat": "colores"
+    },
+    {
+      "en": "cloud",
+      "es": "nube",
+      "icon": "☁️",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "sky",
+      "es": "cielo",
+      "icon": "🌌",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "garden",
+      "es": "jardín",
+      "icon": "🌻",
+      "cat": "lugares"
+    },
+    {
+      "en": "wing",
+      "es": "ala",
+      "icon": "🪽",
+      "cat": "anatomía animal"
+    },
+    {
+      "en": "sun",
+      "es": "sol",
+      "icon": "☀️",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "flower",
+      "es": "flor",
+      "icon": "🌸",
+      "cat": "naturaleza"
     },
     {
       "en": "single",
       "es": "único",
-      "icon": "☝️",
-      "cat": "cantidad"
+      "icon": "1️⃣",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "bubble",
+      "es": "burbuja",
+      "icon": "🫧",
+      "cat": "objetos"
+    },
+    {
+      "en": "gentle",
+      "es": "suave",
+      "icon": "🌬️",
+      "cat": "adjetivos"
     },
     {
       "en": "article",
@@ -74,98 +240,176 @@
     {
       "en": "handle",
       "es": "mango",
-      "icon": "🚪",
+      "icon": "🪚",
       "cat": "objetos"
     },
     {
-      "en": "gentle",
-      "es": "suave",
-      "icon": "☁️",
-      "cat": "adjetivos"
-    },
-    {
-      "en": "bubble",
-      "es": "burbuja",
-      "icon": "🫧",
+      "en": "staple",
+      "es": "grapa",
+      "icon": "📎",
       "cat": "objetos"
     },
     {
-      "en": "beetle",
-      "es": "escarabajo",
-      "icon": "🪲",
-      "cat": "animales"
-    },
-    {
-      "en": "skirt",
-      "es": "falda",
-      "icon": "👗",
-      "cat": "ropa"
-    },
-    {
-      "en": "pen",
-      "es": "bolígrafo",
-      "icon": "🖊️",
-      "cat": "objetos escolares"
-    },
-    {
-      "en": "flower",
-      "es": "flor",
-      "icon": "🌸",
+      "en": "breeze",
+      "es": "brisa",
+      "icon": "🍃",
       "cat": "naturaleza"
     },
     {
-      "en": "cardigan",
-      "es": "rebeca",
-      "icon": "🧥",
-      "cat": "ropa"
+      "en": "baseball card",
+      "es": "tarjeta de béisbol",
+      "icon": "⚾",
+      "cat": "objetos"
     },
     {
-      "en": "butterfly",
-      "es": "mariposa",
-      "icon": "🦋",
-      "cat": "animales"
+      "en": "shovel",
+      "es": "pala",
+      "icon": "shov",
+      "cat": "objetos"
     },
     {
-      "en": "bee",
-      "es": "abeja",
-      "icon": "🐝",
-      "cat": "animales"
+      "en": "report",
+      "es": "informe",
+      "icon": "📄",
+      "cat": "objetos"
     },
     {
-      "en": "ant",
-      "es": "hormiga",
-      "icon": "🐜",
-      "cat": "animales"
-    },
-    {
-      "en": "ladybug",
-      "es": "mariquita",
-      "icon": "🐞",
-      "cat": "animales"
-    },
-    {
-      "en": "escaped",
-      "es": "escapado",
+      "en": "run",
+      "es": "correr",
       "icon": "🏃",
-      "cat": "acciones"
+      "cat": "verbos"
     },
     {
-      "en": "shooting star",
-      "es": "estrella fugaz",
-      "icon": "🌠",
-      "cat": "espacio"
+      "en": "jump",
+      "es": "saltar",
+      "icon": "🤸",
+      "cat": "verbos"
     },
     {
-      "en": "leaping",
-      "es": "saltando",
+      "en": "fly",
+      "es": "volar",
+      "icon": "🦋",
+      "cat": "verbos"
+    },
+    {
+      "en": "buzz",
+      "es": "zumbar",
+      "icon": "🐝",
+      "cat": "verbos"
+    },
+    {
+      "en": "race",
+      "es": "competir",
+      "icon": "🏁",
+      "cat": "verbos"
+    },
+    {
+      "en": "hop",
+      "es": "dar saltitos",
+      "icon": "🐇",
+      "cat": "verbos"
+    },
+    {
+      "en": "write",
+      "es": "escribir",
+      "icon": "✍️",
+      "cat": "verbos"
+    },
+    {
+      "en": "shine",
+      "es": "brillar",
+      "icon": "☀️",
+      "cat": "verbos"
+    },
+    {
+      "en": "leap",
+      "es": "dar un salto",
+      "icon": "🐆",
+      "cat": "verbos"
+    },
+    {
+      "en": "poem",
+      "es": "poema",
+      "icon": "📜",
+      "cat": "sustantivos"
+    },
+    {
+      "en": "kangaroo",
+      "es": "canguro",
       "icon": "🦘",
+      "cat": "animales"
+    },
+    {
+      "en": "katydid",
+      "es": "saltamontes",
+      "icon": "🦗",
+      "cat": "animales"
+    },
+    {
+      "en": "sitting",
+      "es": "sentado",
+      "icon": "🪑",
       "cat": "acciones"
     },
     {
-      "en": "frying eggs",
-      "es": "freír huevos",
-      "icon": "🍳",
+      "en": "eating",
+      "es": "comiendo",
+      "icon": "🍎",
       "cat": "acciones"
+    },
+    {
+      "en": "shining",
+      "es": "brillando",
+      "icon": "☀️",
+      "cat": "acciones"
+    },
+    {
+      "en": "walking",
+      "es": "caminando",
+      "icon": "🚶",
+      "cat": "acciones"
+    },
+    {
+      "en": "grass",
+      "es": "hierba",
+      "icon": "🌱",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "thicket",
+      "es": "matorral",
+      "icon": "🌳",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "sleeping",
+      "es": "durmiendo",
+      "icon": "😴",
+      "cat": "acciones"
+    },
+    {
+      "en": "writing",
+      "es": "escribiendo",
+      "icon": "✍️",
+      "cat": "acciones"
+    },
+    {
+      "en": "reading",
+      "es": "leyendo",
+      "icon": "📖",
+      "cat": "acciones"
+    },
+    {
+      "en": "playing",
+      "es": "jugando",
+      "icon": "⚽",
+      "cat": "acciones"
+    },
+    {
+      "en": "basketball",
+      "es": "baloncesto",
+      "icon": "🏀",
+      "cat": "deportes"
     },
     {
       "en": "singing",
@@ -174,9 +418,117 @@
       "cat": "acciones"
     },
     {
-      "en": "shining",
-      "es": "brillando",
-      "icon": "☀️",
+      "en": "tree",
+      "es": "árbol",
+      "icon": "🌲",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "leaping",
+      "es": "saltando",
+      "icon": "🐰",
+      "cat": "acciones"
+    },
+    {
+      "en": "escaping",
+      "es": "escapando",
+      "icon": "🏃",
+      "cat": "acciones"
+    },
+    {
+      "en": "beetle",
+      "es": "escarabajo",
+      "icon": "🪲",
+      "cat": "insectos"
+    },
+    {
+      "en": "cricket",
+      "es": "grillo",
+      "icon": "🦗",
+      "cat": "insectos"
+    },
+    {
+      "en": "little",
+      "es": "pequeño",
+      "icon": "🤏",
+      "cat": "tamaño"
+    },
+    {
+      "en": "pink",
+      "es": "rosa",
+      "icon": "🌸",
+      "cat": "colores"
+    },
+    {
+      "en": "sweater",
+      "es": "suéter",
+      "icon": "👕",
+      "cat": "ropa"
+    },
+    {
+      "en": "turtle",
+      "es": "tortuga",
+      "icon": "🐢",
+      "cat": "animales"
+    },
+    {
+      "en": "huge",
+      "es": "gigante",
+      "icon": "🏔️",
+      "cat": "tamaño"
+    },
+    {
+      "en": "hungry",
+      "es": "hambriento",
+      "icon": "😋",
+      "cat": "estados"
+    },
+    {
+      "en": "apple",
+      "es": "manzana",
+      "icon": "🍎",
+      "cat": "comida"
+    },
+    {
+      "en": "silver",
+      "es": "plateado",
+      "icon": "🥈",
+      "cat": "colores"
+    },
+    {
+      "en": "tiny",
+      "es": "diminuto",
+      "icon": "🐜",
+      "cat": "tamaño"
+    },
+    {
+      "en": "bracelet",
+      "es": "pulsera",
+      "icon": "📿",
+      "cat": "accesorios"
+    },
+    {
+      "en": "skirt",
+      "es": "falda",
+      "icon": "👗",
+      "cat": "ropa"
+    },
+    {
+      "en": "cardigan",
+      "es": "rebeca",
+      "icon": "🧥",
+      "cat": "ropa"
+    },
+    {
+      "en": "ant",
+      "es": "hormiga",
+      "icon": "🐜",
+      "cat": "insectos"
+    },
+    {
+      "en": "frying eggs",
+      "es": "friendo huevos",
+      "icon": "🍳",
       "cat": "acciones"
     },
     {
@@ -188,7 +540,7 @@
     {
       "en": "honking",
       "es": "tocando la bocina",
-      "icon": "🚗",
+      "icon": "📯",
       "cat": "acciones"
     },
     {
@@ -199,14 +551,8 @@
     },
     {
       "en": "riding",
-      "es": "montar",
+      "es": "montando",
       "icon": "🚲",
-      "cat": "acciones"
-    },
-    {
-      "en": "reading",
-      "es": "leyendo",
-      "icon": "📖",
       "cat": "acciones"
     },
     {
@@ -216,33 +562,21 @@
       "cat": "acciones"
     },
     {
-      "en": "cricket",
-      "es": "grillo",
-      "icon": "🦗",
-      "cat": "insectos"
+      "en": "escaped",
+      "es": "escapó",
+      "icon": "🏃",
+      "cat": "verbos"
     },
     {
-      "en": "grasshopper",
-      "es": "saltamontes",
-      "icon": "🦗",
-      "cat": "insectos"
+      "en": "shooting star",
+      "es": "estrella fugaz",
+      "icon": "🌠",
+      "cat": "espacio"
     },
     {
-      "en": "katydid",
-      "es": "saltamontes de alas largas",
-      "icon": "🌿",
-      "cat": "insectos"
-    },
-    {
-      "en": "thicket",
-      "es": "matorral",
-      "icon": "🌳",
-      "cat": "naturaleza"
-    },
-    {
-      "en": "kangaroo",
-      "es": "canguro",
-      "icon": "🦘",
+      "en": "insect",
+      "es": "insecto",
+      "icon": "🐞",
       "cat": "animales"
     },
     {
@@ -252,10 +586,34 @@
       "cat": "comida"
     },
     {
-      "en": "insect",
-      "es": "insecto",
-      "icon": "🐞",
-      "cat": "animales"
+      "en": "colorful",
+      "es": "colorido",
+      "icon": "🎨",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "beautiful",
+      "es": "hermoso",
+      "icon": "✨",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "quick",
+      "es": "rápido",
+      "icon": "💨",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "noisy",
+      "es": "ruidoso",
+      "icon": "🔊",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "ugly",
+      "es": "feo",
+      "icon": "🧟",
+      "cat": "adjetivos"
     }
   ]
 }
