@@ -46,10 +46,10 @@
       "href": "vocabulario-unidad.html?data=words-05.json",
       "icon": "🎯",
       "iconLabel": "diana",
-      "desc": "Insectos, adjetivos, palabras en -le y el mundo que nos rodea.",
+      "desc": "palabras terminadas en -le, ropa, naturaleza.",
       "category": "trivia",
       "badge": "Trivia",
-      "count": "36 palabras",
+      "count": "28 palabras",
       "theme": "sky",
       "ariaLabel": "Jugar Trivia Unit 5: insectos, adjetivos y naturaleza"
     },
@@ -136,6 +136,17 @@
       "count": "55 palabras",
       "theme": "green",
       "ariaLabel": "Jugar Trivia Science: comida, cuerpo y verbos"
+    },
+    {
+      "title": "Adivinanzas – Unit 5",
+      "href": "trivia.html?data=riddles-05.json",
+      "icon": "🕵️",
+      "iconLabel": "detective",
+      "desc": "Lee una pista en ingles y descubre a que se refiere.",
+      "category": "adivinanzas",
+      "badge": "Adivinanzas",
+      "count": "4 preguntas",
+      "theme": "violet"
     }
   ]
 }
