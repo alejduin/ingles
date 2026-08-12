@@ -8,7 +8,83 @@
   },
   "questions": [
     {
-      "question": "This is bright, and it moves fast across the sky.",
+      "question": "Was the kangaroo hopping?",
+      "correct_answers": [
+        "yes, it was."
+      ],
+      "incorrect_answers": [
+        "no, it wasn't."
+      ]
+    },
+    {
+      "question": "Were they writing poems?",
+      "correct_answers": [
+        "no, they weren't."
+      ],
+      "incorrect_answers": [
+        "yes, they were."
+      ]
+    },
+    {
+      "question": "What was the butterfly doing?",
+      "correct_answers": [
+        "the butterfly was flying."
+      ],
+      "incorrect_answers": [
+        "the butterflies were flying."
+      ]
+    },
+    {
+      "question": "What was going on outside?",
+      "correct_answers": [
+        "the bee was buzzing."
+      ],
+      "incorrect_answers": [
+        "the bees were buzzing."
+      ]
+    },
+    {
+      "question": "Which insect is red with black spots?",
+      "correct_answers": [
+        "ladybug"
+      ],
+      "incorrect_answers": [
+        "grasshopper",
+        "bee"
+      ]
+    },
+    {
+      "question": "Which insect has beautiful, colorful wings?",
+      "correct_answers": [
+        "butterfly"
+      ],
+      "incorrect_answers": [
+        "katydid",
+        "raisin"
+      ]
+    },
+    {
+      "question": "Which animal or insect has hard wings like shells?",
+      "correct_answers": [
+        "beetle"
+      ],
+      "incorrect_answers": [
+        "kangaroo",
+        "grasshopper"
+      ]
+    },
+    {
+      "question": "What is a place that has lots of bushes and small trees?",
+      "correct_answers": [
+        "thicket"
+      ],
+      "incorrect_answers": [
+        "katydid",
+        "cricket"
+      ]
+    },
+    {
+      "question": "What is something that is bright and moves fast across the sky?",
       "correct_answers": [
         "shooting star"
       ],
@@ -18,33 +94,33 @@
       ]
     },
     {
-      "question": "This means 'got away from a place.'",
+      "question": "What word means 'jumping up high'?",
+      "correct_answers": [
+        "leaping"
+      ],
+      "incorrect_answers": [
+        "escaped",
+        "insects"
+      ]
+    },
+    {
+      "question": "What word means 'got away from a place'?",
       "correct_answers": [
         "escaped"
       ],
       "incorrect_answers": [
-        "insects",
-        "leaping"
-      ]
-    },
-    {
-      "question": "This means 'jumping up high.'",
-      "correct_answers": [
-        "leaping"
-      ],
-      "incorrect_answers": [
-        "escaped",
+        "leaping",
         "shooting star"
       ]
     },
     {
-      "question": "Ladybugs and grasshoppers are examples of these.",
+      "question": "What are ladybugs and grasshoppers examples of?",
       "correct_answers": [
         "insects"
       ],
       "incorrect_answers": [
-        "escaped",
-        "leaping"
+        "shooting star",
+        "escaped"
       ]
     }
   ]
