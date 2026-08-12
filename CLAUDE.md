@@ -108,8 +108,8 @@ dentro de un ejercicio pero no el enunciado. Esa última regla subió la cobertu
 - Quedan cuatro pares base/gerundio duplicados en `words-05.json` (`write`/`writing`,
   `shine`/`shining`, `leap`/`leaping`, `escaped`/`escaping`). El dedup del extractor solo
   cubre `+s`/`+es`.
-- En `pdf-a-datos` hay un nodo de Gemini API desconectado a propósito, por si hay que
-  volver a él. Genera tres avisos de validación en cada guardado.
+- La reserva de `Extraer pagina` es Claude, y su credencial no funciona mientras la
+  cuenta de Anthropic siga bloqueada. Si Vertex falla, verás dos errores encadenados.
 
 ## Skills instaladas y cuándo usar cada una
 
