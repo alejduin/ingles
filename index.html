@@ -211,7 +211,13 @@
             transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
                         box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateY(0);
-            animation: cardFadeIn 0.6s ease-out both;
+            /* Sin `both` a propósito. Con relleno hacia delante, la animación
+               sigue siendo dueña de `transform` al terminar, y en la cascada
+               una animación gana a una declaración normal: el translateY(-8px)
+               del :hover no llegaba a aplicarse nunca. Las tarjetas no llevan
+               animation-delay, así que `backwards` tampoco aportaba nada, y el
+               estado base ya coincide con el último fotograma: no hay salto. */
+            animation: cardFadeIn 0.6s ease-out;
             position: relative;
             overflow: hidden;
             outline: none;
