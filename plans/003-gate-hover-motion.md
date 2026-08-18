@@ -1,6 +1,8 @@
 # 003 — Gate hover-triggered movement behind a fine-pointer media query
 
-- **Status**: APPLIED — mechanical checks passed, touch feel check NOT run
+- **Status**: DONE — verified in two browser contexts: the gate evaluates
+  `true` with a mouse and `false` on a touch context, so no hover movement can
+  stick after a tap. Reproduce with `node tools/verify-animations.mjs`
 - **Commit**: e48990f (applied on top of 466ec10)
 - **Severity**: MEDIUM
 - **Category**: Accessibility (AUDIT.md §6)

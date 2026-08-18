@@ -1,6 +1,10 @@
 # 002 — Add `prefers-reduced-motion` to the six files that lack it
 
-- **Status**: APPLIED — mechanical checks passed, emulated feel check NOT run
+- **Status**: DONE — verified emulating `prefers-reduced-motion: reduce`: no
+  `transform` survives on any page. The short `box-shadow` / colour transitions
+  that do survive are the ones this plan specified on purpose (§6 asks for
+  "fewer and gentler, not zero"). Reproduce with
+  `node tools/verify-animations.mjs`
 - **Commit**: e48990f (applied on top of 466ec10, after plan 003)
 - **Severity**: MEDIUM
 - **Category**: Accessibility (AUDIT.md §6)

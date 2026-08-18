@@ -100,8 +100,9 @@ dentro de un ejercicio pero no el enunciado. Esa última regla subió la cobertu
 
 - `cdn.tailwindcss.com` compila en el navegador y no está pensado para producción.
   Aceptado a cambio de no tener build.
-- Los tres planes de `plans/` están aplicados pero ninguno verificado en un navegador
-  real. Lo pendiente está listado en `plans/README.md`.
+- Los tres planes de `plans/` están aplicados **y verificados** en un Chromium real
+  (`node tools/verify-animations.mjs`). Queda el juicio humano: el verificador dice
+  si el movimiento ocurre, no si gusta.
 - `words-05.json` tiene 89 palabras, más del doble que las unidades escritas a mano.
   Es todo contenido legítimo de la unidad, pero es un cuestionario largo. Decisión
   consciente de dejarlo así por ahora.
@@ -138,6 +139,18 @@ patrones sobre HTML ya escrito. Funciona con CSS vanilla.
 
 **Ignora su subsección "Motion Upgrades"** (scroll con inercia, spring physics en todo,
 reveals por scroll). Contradice al carril 1, que es la autoridad en movimiento.
+
+### Carril 4 — Verificación en navegador
+
+`verificar-en-navegador` (skill propia del repo) — abre las páginas en un Chromium
+real. Ortogonal a los otros carriles: ellos deciden **qué** debe pasar, esta
+comprueba que **pasa de verdad**. Un comando: `node tools/verify-animations.mjs`.
+
+Esto **no rompe la regla de "sin build"**: `tools/` es QA que se ejecuta a mano, el
+sitio se sigue sirviendo como ficheros estáticos y no hay `npm install` (Playwright
+sale de la caché de `npx`). Justificó su existencia el primer día: encontró que el
+hover de las tarjetas de `index.html` llevaba tiempo muerto porque una animación con
+`fill-mode: both` se quedaba dueña de `transform`. Leyendo el CSS parecía correcto.
 
 ### Carril 3 — Higiene de salida
 
