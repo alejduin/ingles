@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "unit": "11",
+    "title": "Unidad 11",
+    "subtitle": "Lee la pista y adivina de que se habla",
+    "theme": "sky"
+  },
+  "questions": [
+    {
+      "question": "He works for a philharmonic, conducts, and moves a baton to make music.",
+      "correct_answers": [
+        "conductor"
+      ],
+      "incorrect_answers": [
+        "scientist",
+        "astronaut"
+      ]
+    },
+    {
+      "question": "She works in a laboratory and wants to orbit Earth in a rocket.",
+      "correct_answers": [
+        "scientist"
+      ],
+      "incorrect_answers": [
+        "circus trainer",
+        "conductor"
+      ]
+    },
+    {
+      "question": "A person who works with lions, tigers, and elephants.",
+      "correct_answers": [
+        "circus trainer"
+      ],
+      "incorrect_answers": [
+        "astronaut",
+        "scientist"
+      ]
+    }
+  ]
+}
