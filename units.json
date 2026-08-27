@@ -147,6 +147,28 @@
       "badge": "Adivinanzas",
       "count": "12 preguntas",
       "theme": "violet"
+    },
+    {
+      "title": "Trivia – Unit 11",
+      "href": "vocabulario-unidad.html?data=words-11.json",
+      "icon": "🎯",
+      "iconLabel": "diana",
+      "desc": "instrumentos musicales, música, profesiones.",
+      "category": "trivia",
+      "badge": "Trivia",
+      "count": "45 palabras",
+      "theme": "sky"
+    },
+    {
+      "title": "Adivinanzas – Unit 11",
+      "href": "trivia.html?data=riddles-11.json",
+      "icon": "🕵️",
+      "iconLabel": "detective",
+      "desc": "Lee una pista en ingles y descubre a que se refiere.",
+      "category": "adivinanzas",
+      "badge": "Adivinanzas",
+      "count": "3 preguntas",
+      "theme": "violet"
     }
   ]
 }
