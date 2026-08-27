@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "unit": "11",
+    "title": "Unidad 11",
+    "subtitle": "instrumentos musicales, música, profesiones",
+    "theme": "sky"
+  },
+  "categories": [
+    {
+      "name": "instrumentos musicales",
+      "label": "instrumentos musicales"
+    },
+    {
+      "name": "música",
+      "label": "música"
+    },
+    {
+      "name": "profesiones",
+      "label": "profesiones"
+    },
+    {
+      "name": "lugares",
+      "label": "lugares"
+    },
+    {
+      "name": "naturaleza",
+      "label": "naturaleza"
+    },
+    {
+      "name": "animales",
+      "label": "animales"
+    },
+    {
+      "name": "conceptos",
+      "label": "conceptos"
+    },
+    {
+      "name": "adjetivos",
+      "label": "adjetivos"
+    },
+    {
+      "name": "oficios",
+      "label": "oficios"
+    },
+    {
+      "name": "verbos",
+      "label": "verbos"
+    },
+    {
+      "name": "comida",
+      "label": "comida"
+    },
+    {
+      "name": "instrumentos",
+      "label": "instrumentos"
+    }
+  ],
+  "words": [
+    {
+      "en": "cello",
+      "es": "violonchelo",
+      "icon": "🎻",
+      "cat": "instrumentos musicales"
+    },
+    {
+      "en": "timpani",
+      "es": "timbales",
+      "icon": "🥁",
+      "cat": "instrumentos musicales"
+    },
+    {
+      "en": "trombone",
+      "es": "trombón",
+      "icon": "🎺",
+      "cat": "instrumentos musicales"
+    },
+    {
+      "en": "bassoon",
+      "es": "fagot",
+      "icon": "🎷",
+      "cat": "instrumentos musicales"
+    },
+    {
+      "en": "orchestra",
+      "es": "orquesta",
+      "icon": "🎼",
+      "cat": "música"
+    },
+    {
+      "en": "conductor",
+      "es": "director de orquesta",
+      "icon": "👨‍💼",
+      "cat": "profesiones"
+    },
+    {
+      "en": "baton",
+      "es": "batuta",
+      "icon": "🪄",
+      "cat": "música"
+    },
+    {
+      "en": "astronaut",
+      "es": "astronauta",
+      "icon": "👨‍🚀",
+      "cat": "profesiones"
+    },
+    {
+      "en": "circus trainer",
+      "es": "entrenador de circo",
+      "icon": "🦁",
+      "cat": "profesiones"
+    },
+    {
+      "en": "scientist",
+      "es": "científico",
+      "icon": "🥼",
+      "cat": "profesiones"
+    },
+    {
+      "en": "music shop",
+      "es": "tienda de música",
+      "icon": "🎶",
+      "cat": "lugares"
+    },
+    {
+      "en": "nest",
+      "es": "nido",
+      "icon": "🪹",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "egg",
+      "es": "huevo",
+      "icon": "🥚",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "bird",
+      "es": "pájaro",
+      "icon": "🐦",
+      "cat": "animales"
+    },
+    {
+      "en": "mystery",
+      "es": "misterio",
+      "icon": "🔍",
+      "cat": "conceptos"
+    },
+    {
+      "en": "gym",
+      "es": "gimnasio",
+      "icon": "🏀",
+      "cat": "lugares"
+    },
+    {
+      "en": "deafening",
+      "es": "ensordecedor",
+      "icon": "🔊",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "beekeeper",
+      "es": "apicultor",
+      "icon": "🐝",
+      "cat": "oficios"
+    },
+    {
+      "en": "loud",
+      "es": "ruidoso",
+      "icon": "🔊",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "beautiful",
+      "es": "hermoso",
+      "icon": "✨",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "interesting",
+      "es": "interesante",
+      "icon": "💡",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "funny",
+      "es": "gracioso",
+      "icon": "😂",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "smart",
+      "es": "inteligente",
+      "icon": "🧠",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "amaze",
+      "es": "asombrar",
+      "icon": "😲",
+      "cat": "verbos"
+    },
+    {
+      "en": "challenge",
+      "es": "desafiar",
+      "icon": "🥊",
+      "cat": "verbos"
+    },
+    {
+      "en": "relax",
+      "es": "relajarse",
+      "icon": "🧘",
+      "cat": "verbos"
+    },
+    {
+      "en": "amazing",
+      "es": "asombroso",
+      "icon": "✨",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "relaxing",
+      "es": "relajante",
+      "icon": "🛀",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "challenging",
+      "es": "desafiante",
+      "icon": "🧩",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "teacher",
+      "es": "profesor",
+      "icon": "🍎",
+      "cat": "profesiones"
+    },
+    {
+      "en": "apple",
+      "es": "manzana",
+      "icon": "🍎",
+      "cat": "comida"
+    },
+    {
+      "en": "funnier",
+      "es": "más divertido",
+      "icon": "😂",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "tallest",
+      "es": "el más alto",
+      "icon": "🦒",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "sunnier",
+      "es": "más soleado",
+      "icon": "☀️",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "elegant",
+      "es": "elegante",
+      "icon": "🎻",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "louder",
+      "es": "más ruidoso",
+      "icon": "🔊",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "bigger",
+      "es": "más grande",
+      "icon": "🐘",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "important",
+      "es": "importante",
+      "icon": "⭐",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "largest",
+      "es": "el más grande",
+      "icon": "🏔️",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "triangle",
+      "es": "triángulo",
+      "icon": "🔺",
+      "cat": "instrumentos"
+    },
+    {
+      "en": "maracas",
+      "es": "maracas",
+      "icon": "🪇",
+      "cat": "instrumentos"
+    },
+    {
+      "en": "cymbal",
+      "es": "platillos",
+      "icon": "🥁",
+      "cat": "instrumentos"
+    },
+    {
+      "en": "butterfly",
+      "es": "mariposa",
+      "icon": "🦋",
+      "cat": "animales"
+    },
+    {
+      "en": "beetle",
+      "es": "escarabajo",
+      "icon": "🪲",
+      "cat": "animales"
+    },
+    {
+      "en": "tambourine",
+      "es": "pandereta",
+      "icon": "🪘",
+      "cat": "instrumentos"
+    }
+  ]
+}
