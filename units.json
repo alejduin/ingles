@@ -169,6 +169,28 @@
       "badge": "Adivinanzas",
       "count": "3 preguntas",
       "theme": "violet"
+    },
+    {
+      "title": "Trivia – Unit 7",
+      "href": "vocabulario-unidad.html?data=words-07.json",
+      "icon": "🎯",
+      "iconLabel": "diana",
+      "desc": "planeta, espacio, verbo.",
+      "category": "trivia",
+      "badge": "Trivia",
+      "count": "24 palabras",
+      "theme": "sky"
+    },
+    {
+      "title": "Adivinanzas – Unit 7",
+      "href": "trivia.html?data=riddles-07.json",
+      "icon": "🕵️",
+      "iconLabel": "detective",
+      "desc": "Lee una pista en ingles y descubre a que se refiere.",
+      "category": "adivinanzas",
+      "badge": "Adivinanzas",
+      "count": "17 preguntas",
+      "theme": "violet"
     }
   ]
 }
