@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "unit": "7",
+    "title": "Unidad 7",
+    "subtitle": "Lee la pista y adivina de que se habla",
+    "theme": "sky"
+  },
+  "questions": [
+    {
+      "question": "Will your sister be 6 years old on her next birthday?",
+      "correct_answers": [
+        "yes, she will."
+      ],
+      "incorrect_answers": [
+        "yes, i will."
+      ]
+    },
+    {
+      "question": "How will you go to school tomorrow?",
+      "correct_answers": [
+        "i'll ride my bicycle."
+      ],
+      "incorrect_answers": [
+        "he'll ride his bicycle."
+      ]
+    },
+    {
+      "question": "Where will she be at 11:00 a.m.?",
+      "correct_answers": [
+        "she'll be in english class."
+      ],
+      "incorrect_answers": [
+        "she'll be in math class."
+      ]
+    },
+    {
+      "question": "When will the sun come up tomorrow?",
+      "correct_answers": [
+        "the sun will come up at 6:30 a.m. tomorrow."
+      ],
+      "incorrect_answers": [
+        "the sun won't come up at 6:30 a.m. tomorrow."
+      ]
+    },
+    {
+      "question": "July is my favorite ___ of the year.",
+      "correct_answers": [
+        "month"
+      ],
+      "incorrect_answers": [
+        "minute",
+        "second"
+      ]
+    },
+    {
+      "question": "The planets ___ around the sun.",
+      "correct_answers": [
+        "orbit"
+      ],
+      "incorrect_answers": [
+        "multiply",
+        "spin"
+      ]
+    },
+    {
+      "question": "Sydney is in a different ___ from Perth.",
+      "correct_answers": [
+        "time zone"
+      ],
+      "incorrect_answers": [
+        "year",
+        "hour"
+      ]
+    },
+    {
+      "question": "There are 60 ___ in an hour.",
+      "correct_answers": [
+        "minutes"
+      ],
+      "incorrect_answers": [
+        "months",
+        "seconds"
+      ]
+    },
+    {
+      "question": "What is an axis?",
+      "correct_answers": [
+        "an imaginary line"
+      ],
+      "incorrect_answers": [
+        "a planet",
+        "the sun"
+      ]
+    },
+    {
+      "question": "What does accurate mean?",
+      "correct_answers": [
+        "correct"
+      ],
+      "incorrect_answers": [
+        "not correct",
+        "funny"
+      ]
+    },
+    {
+      "question": "What is the same as the opposite side?",
+      "correct_answers": [
+        "the other side"
+      ],
+      "incorrect_answers": [
+        "the morning",
+        "the evening"
+      ]
+    },
+    {
+      "question": "Looking at the diagram of the Earth, how much of Earth is dark?",
+      "correct_answers": [
+        "half of earth"
+      ],
+      "incorrect_answers": [
+        "none of earth",
+        "all of earth"
+      ]
+    },
+    {
+      "question": "How does light from the sun move to Earth?",
+      "correct_answers": [
+        "in straight lines"
+      ],
+      "incorrect_answers": [
+        "in curvy lines",
+        "the diagram doesn't tell me"
+      ]
+    },
+    {
+      "question": "How much of Earth is in daylight?",
+      "correct_answers": [
+        "half of earth"
+      ],
+      "incorrect_answers": [
+        "all of earth",
+        "none of earth"
+      ]
+    },
+    {
+      "question": "This is faster than adding.",
+      "correct_answers": [
+        "multiplying"
+      ],
+      "incorrect_answers": [
+        "spin",
+        "noon"
+      ]
+    },
+    {
+      "question": "You can do this by turning in a circle.",
+      "correct_answers": [
+        "spin"
+      ],
+      "incorrect_answers": [
+        "time zone",
+        "orbit"
+      ]
+    },
+    {
+      "question": "Many people eat lunch at this time.",
+      "correct_answers": [
+        "noon"
+      ],
+      "incorrect_answers": [
+        "multiplying",
+        "spin"
+      ]
+    }
+  ]
+}
