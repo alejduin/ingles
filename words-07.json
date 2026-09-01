@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "unit": "7",
+    "title": "Unidad 7",
+    "subtitle": "planeta, espacio, verbo",
+    "theme": "sky"
+  },
+  "categories": [
+    {
+      "name": "planeta",
+      "label": "planeta"
+    },
+    {
+      "name": "espacio",
+      "label": "espacio"
+    },
+    {
+      "name": "verbo",
+      "label": "verbo"
+    },
+    {
+      "name": "evento",
+      "label": "evento"
+    },
+    {
+      "name": "transporte",
+      "label": "transporte"
+    },
+    {
+      "name": "escuela",
+      "label": "escuela"
+    },
+    {
+      "name": "tiempo",
+      "label": "tiempo"
+    },
+    {
+      "name": "matemáticas",
+      "label": "matemáticas"
+    },
+    {
+      "name": "geografía",
+      "label": "geografía"
+    },
+    {
+      "name": "ciencias",
+      "label": "ciencias"
+    },
+    {
+      "name": "adjetivos",
+      "label": "adjetivos"
+    },
+    {
+      "name": "dirección",
+      "label": "dirección"
+    }
+  ],
+  "words": [
+    {
+      "en": "earth",
+      "es": "tierra",
+      "icon": "🌍",
+      "cat": "planeta"
+    },
+    {
+      "en": "sun",
+      "es": "sol",
+      "icon": "☀️",
+      "cat": "espacio"
+    },
+    {
+      "en": "orbit",
+      "es": "orbitar",
+      "icon": "🔄",
+      "cat": "verbo"
+    },
+    {
+      "en": "mercury",
+      "es": "mercurio",
+      "icon": "☄️",
+      "cat": "planeta"
+    },
+    {
+      "en": "birthday",
+      "es": "cumpleaños",
+      "icon": "🎂",
+      "cat": "evento"
+    },
+    {
+      "en": "bicycle",
+      "es": "bicicleta",
+      "icon": "🚲",
+      "cat": "transporte"
+    },
+    {
+      "en": "math class",
+      "es": "clase de matemáticas",
+      "icon": "📐",
+      "cat": "escuela"
+    },
+    {
+      "en": "english class",
+      "es": "clase de inglés",
+      "icon": "🇬🇧",
+      "cat": "escuela"
+    },
+    {
+      "en": "month",
+      "es": "mes",
+      "icon": "📅",
+      "cat": "tiempo"
+    },
+    {
+      "en": "minute",
+      "es": "minuto",
+      "icon": "⏱️",
+      "cat": "tiempo"
+    },
+    {
+      "en": "second",
+      "es": "segundo",
+      "icon": "⌛",
+      "cat": "tiempo"
+    },
+    {
+      "en": "multiply",
+      "es": "multiplicar",
+      "icon": "✖️",
+      "cat": "matemáticas"
+    },
+    {
+      "en": "spin",
+      "es": "girar",
+      "icon": "🌀",
+      "cat": "verbo"
+    },
+    {
+      "en": "time zone",
+      "es": "huso horario",
+      "icon": "🌍",
+      "cat": "geografía"
+    },
+    {
+      "en": "year",
+      "es": "año",
+      "icon": "🗓️",
+      "cat": "tiempo"
+    },
+    {
+      "en": "hour",
+      "es": "hora",
+      "icon": "🕰️",
+      "cat": "tiempo"
+    },
+    {
+      "en": "noon",
+      "es": "mediodía",
+      "icon": "☀️",
+      "cat": "tiempo"
+    },
+    {
+      "en": "day",
+      "es": "día",
+      "icon": "☀️",
+      "cat": "tiempo"
+    },
+    {
+      "en": "week",
+      "es": "semana",
+      "icon": "📅",
+      "cat": "tiempo"
+    },
+    {
+      "en": "axis",
+      "es": "eje",
+      "icon": "📏",
+      "cat": "ciencias"
+    },
+    {
+      "en": "accurate",
+      "es": "preciso",
+      "icon": "🎯",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "opposite",
+      "es": "opuesto",
+      "icon": "↔️",
+      "cat": "dirección"
+    },
+    {
+      "en": "diagram",
+      "es": "diagrama",
+      "icon": "📊",
+      "cat": "ciencias"
+    },
+    {
+      "en": "planet",
+      "es": "planeta",
+      "icon": "🪐",
+      "cat": "ciencias"
+    }
+  ]
+}
