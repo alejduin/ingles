@@ -1,0 +1,375 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "unit": "8",
+    "title": "Unidad 8",
+    "subtitle": "acciones ambientales, objetos, comida",
+    "theme": "sky"
+  },
+  "categories": [
+    {
+      "name": "acciones ambientales",
+      "label": "acciones ambientales"
+    },
+    {
+      "name": "objetos",
+      "label": "objetos"
+    },
+    {
+      "name": "comida",
+      "label": "comida"
+    },
+    {
+      "name": "actividades",
+      "label": "actividades"
+    },
+    {
+      "name": "naturaleza",
+      "label": "naturaleza"
+    },
+    {
+      "name": "descripción",
+      "label": "descripción"
+    },
+    {
+      "name": "verbo",
+      "label": "verbo"
+    },
+    {
+      "name": "ciencia",
+      "label": "ciencia"
+    },
+    {
+      "name": "personas",
+      "label": "personas"
+    },
+    {
+      "name": "cuerpo",
+      "label": "cuerpo"
+    },
+    {
+      "name": "salud",
+      "label": "salud"
+    },
+    {
+      "name": "alimentos",
+      "label": "alimentos"
+    },
+    {
+      "name": "microorganismos",
+      "label": "microorganismos"
+    },
+    {
+      "name": "adjetivos",
+      "label": "adjetivos"
+    },
+    {
+      "name": "sustantivos",
+      "label": "sustantivos"
+    },
+    {
+      "name": "partes de la planta",
+      "label": "partes de la planta"
+    },
+    {
+      "name": "nutrición",
+      "label": "nutrición"
+    },
+    {
+      "name": "cosas",
+      "label": "cosas"
+    },
+    {
+      "name": "animales",
+      "label": "animales"
+    },
+    {
+      "name": "elementos naturales",
+      "label": "elementos naturales"
+    }
+  ],
+  "words": [
+    {
+      "en": "saving water",
+      "es": "ahorrar agua",
+      "icon": "🚰",
+      "cat": "acciones ambientales"
+    },
+    {
+      "en": "cutting down on rubbish",
+      "es": "reducir residuos",
+      "icon": "🗑️",
+      "cat": "acciones ambientales"
+    },
+    {
+      "en": "recycled",
+      "es": "reciclado",
+      "icon": "♻️",
+      "cat": "acciones ambientales"
+    },
+    {
+      "en": "water bottles",
+      "es": "botellas de agua",
+      "icon": "🍶",
+      "cat": "objetos"
+    },
+    {
+      "en": "vegetables",
+      "es": "verduras",
+      "icon": "🥦",
+      "cat": "comida"
+    },
+    {
+      "en": "shopping",
+      "es": "compras",
+      "icon": "🛍️",
+      "cat": "actividades"
+    },
+    {
+      "en": "rainwater",
+      "es": "agua de lluvia",
+      "icon": "🌧️",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "environment",
+      "es": "entorno",
+      "icon": "🌍",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "healthy",
+      "es": "saludable",
+      "icon": "✅",
+      "cat": "descripción"
+    },
+    {
+      "en": "unhealthy",
+      "es": "insalubre",
+      "icon": "❌",
+      "cat": "descripción"
+    },
+    {
+      "en": "observe",
+      "es": "observar",
+      "icon": "👁️",
+      "cat": "verbo"
+    },
+    {
+      "en": "classify",
+      "es": "clasificar",
+      "icon": "📁",
+      "cat": "verbo"
+    },
+    {
+      "en": "micro-organisms",
+      "es": "microorganismos",
+      "icon": "🦠",
+      "cat": "ciencia"
+    },
+    {
+      "en": "bread",
+      "es": "pan",
+      "icon": "🍞",
+      "cat": "comida"
+    },
+    {
+      "en": "doctor",
+      "es": "médico",
+      "icon": "👩‍⚕️",
+      "cat": "personas"
+    },
+    {
+      "en": "throat",
+      "es": "garganta",
+      "icon": "🧣",
+      "cat": "cuerpo"
+    },
+    {
+      "en": "bacteria",
+      "es": "bacterias",
+      "icon": "🧫",
+      "cat": "ciencia"
+    },
+    {
+      "en": "sick",
+      "es": "enfermo",
+      "icon": "🤒",
+      "cat": "salud"
+    },
+    {
+      "en": "teeth",
+      "es": "dientes",
+      "icon": "🦷",
+      "cat": "cuerpo"
+    },
+    {
+      "en": "decay",
+      "es": "cariado",
+      "icon": "🕳️",
+      "cat": "salud"
+    },
+    {
+      "en": "soy sauce",
+      "es": "salsa de soja",
+      "icon": "🍶",
+      "cat": "alimentos"
+    },
+    {
+      "en": "cheese",
+      "es": "queso",
+      "icon": "🧀",
+      "cat": "alimentos"
+    },
+    {
+      "en": "yoghurt",
+      "es": "yogur",
+      "icon": "🍦",
+      "cat": "alimentos"
+    },
+    {
+      "en": "yeast",
+      "es": "levadura",
+      "icon": "🧪",
+      "cat": "microorganismos"
+    },
+    {
+      "en": "harmful",
+      "es": "dañino",
+      "icon": "⚠️",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "poisonous",
+      "es": "venenoso",
+      "icon": "☠️",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "rash",
+      "es": "erupción",
+      "icon": "🤒",
+      "cat": "sustantivos"
+    },
+    {
+      "en": "skin",
+      "es": "piel",
+      "icon": "✋",
+      "cat": "cuerpo"
+    },
+    {
+      "en": "seed",
+      "es": "semilla",
+      "icon": "🌱",
+      "cat": "partes de la planta"
+    },
+    {
+      "en": "leaves",
+      "es": "hojas",
+      "icon": "🍃",
+      "cat": "partes de la planta"
+    },
+    {
+      "en": "food",
+      "es": "comida",
+      "icon": "🍎",
+      "cat": "nutrición"
+    },
+    {
+      "en": "medicines",
+      "es": "medicinas",
+      "icon": "💊",
+      "cat": "salud"
+    },
+    {
+      "en": "objects",
+      "es": "objetos",
+      "icon": "📦",
+      "cat": "cosas"
+    },
+    {
+      "en": "cows",
+      "es": "vacas",
+      "icon": "🐄",
+      "cat": "animales"
+    },
+    {
+      "en": "grass",
+      "es": "hierba",
+      "icon": "🌿",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "birds",
+      "es": "pájaros",
+      "icon": "🐦",
+      "cat": "animales"
+    },
+    {
+      "en": "tyres",
+      "es": "neumáticos",
+      "icon": "🛞",
+      "cat": "objetos"
+    },
+    {
+      "en": "clothes",
+      "es": "ropa",
+      "icon": "👕",
+      "cat": "objetos"
+    },
+    {
+      "en": "flower",
+      "es": "flor",
+      "icon": "🌸",
+      "cat": "partes de la planta"
+    },
+    {
+      "en": "fruit",
+      "es": "fruta",
+      "icon": "🍎",
+      "cat": "partes de la planta"
+    },
+    {
+      "en": "stem",
+      "es": "tallo",
+      "icon": "🌿",
+      "cat": "partes de la planta"
+    },
+    {
+      "en": "roots",
+      "es": "raíces",
+      "icon": "🫚",
+      "cat": "partes de la planta"
+    },
+    {
+      "en": "water",
+      "es": "agua",
+      "icon": "💧",
+      "cat": "elementos naturales"
+    },
+    {
+      "en": "minerals",
+      "es": "minerales",
+      "icon": "💎",
+      "cat": "elementos naturales"
+    },
+    {
+      "en": "plant",
+      "es": "planta",
+      "icon": "🌱",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "ground",
+      "es": "suelo",
+      "icon": "🟫",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "grow",
+      "es": "crecer",
+      "icon": "📈",
+      "cat": "verbo"
+    }
+  ]
+}
