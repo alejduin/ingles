@@ -191,6 +191,17 @@
       "badge": "Adivinanzas",
       "count": "17 preguntas",
       "theme": "violet"
+    },
+    {
+      "title": "Trivia – Unit 8",
+      "href": "vocabulario-unidad.html?data=words-08.json",
+      "icon": "🎯",
+      "iconLabel": "diana",
+      "desc": "acciones ambientales, objetos, comida.",
+      "category": "trivia",
+      "badge": "Trivia",
+      "count": "47 palabras",
+      "theme": "sky"
     }
   ]
 }
