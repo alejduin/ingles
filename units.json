@@ -92,12 +92,12 @@
     {
       "title": "Trivia – Unit 10",
       "href": "vocabulario-unidad.html?data=words-10.json",
-      "icon": "🚆",
-      "iconLabel": "tren",
-      "desc": "Transporte, energía renovable, cuantificadores y lugares.",
+      "icon": "🎯",
+      "iconLabel": "diana",
+      "desc": "ciencia, materiales, adjetivos.",
       "category": "trivia",
       "badge": "Trivia",
-      "count": "27 palabras",
+      "count": "68 palabras",
       "theme": "sky",
       "ariaLabel": "Jugar Trivia Unit 10: transporte, energía y cuantificadores"
     },
