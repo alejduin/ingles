@@ -3,45 +3,491 @@
   "meta": {
     "unit": "10",
     "title": "Unidad 10",
-    "subtitle": "Transporte, energía y cuantificadores",
+    "subtitle": "ciencia, materiales, adjetivos",
     "theme": "sky"
   },
   "categories": [
-    { "name": "Transporte", "label": "Transporte (Transportation)", "icon": "🚑" },
-    { "name": "Energía", "label": "Energía y Tecnología (Energy)", "icon": "⚡" },
-    { "name": "Gramática", "label": "Cuantificadores (Quantifiers)", "icon": "🔤" },
-    { "name": "Lugares", "label": "Lugares y Otros (Places)", "icon": "🗺️" }
+    {
+      "name": "ciencia",
+      "label": "ciencia"
+    },
+    {
+      "name": "materiales",
+      "label": "materiales"
+    },
+    {
+      "name": "adjetivos",
+      "label": "adjetivos"
+    },
+    {
+      "name": "verbos",
+      "label": "verbos"
+    },
+    {
+      "name": "utensilios",
+      "label": "utensilios"
+    },
+    {
+      "name": "conceptos",
+      "label": "conceptos"
+    },
+    {
+      "name": "herramientas",
+      "label": "herramientas"
+    },
+    {
+      "name": "objetos",
+      "label": "objetos"
+    },
+    {
+      "name": "naturaleza",
+      "label": "naturaleza"
+    },
+    {
+      "name": "propiedades",
+      "label": "propiedades"
+    },
+    {
+      "name": "tamaño",
+      "label": "tamaño"
+    },
+    {
+      "name": "formas",
+      "label": "formas"
+    },
+    {
+      "name": "colores",
+      "label": "colores"
+    },
+    {
+      "name": "lugares",
+      "label": "lugares"
+    },
+    {
+      "name": "objeto",
+      "label": "objeto"
+    },
+    {
+      "name": "juguete",
+      "label": "juguete"
+    },
+    {
+      "name": "material",
+      "label": "material"
+    },
+    {
+      "name": "asignatura",
+      "label": "asignatura"
+    }
   ],
   "words": [
-    { "en": "ambulance", "es": "ambulancia", "icon": "🚑", "cat": "Transporte" },
-    { "en": "escalator", "es": "escalera mecánica", "icon": "🪜", "cat": "Transporte" },
-    { "en": "subway", "es": "metro / tren subterráneo", "icon": "🚇", "cat": "Transporte" },
-    { "en": "fire engine", "es": "camión de bomberos", "icon": "🚒", "cat": "Transporte" },
-    { "en": "carpool", "es": "compartir auto / viaje compartido", "icon": "🚙", "cat": "Transporte" },
-    { "en": "train", "es": "tren", "icon": "🚆", "cat": "Transporte" },
-    { "en": "taxi", "es": "taxi", "icon": "🚕", "cat": "Transporte" },
-    { "en": "elevator", "es": "ascensor / elevador", "icon": "🛗", "cat": "Transporte" },
-    { "en": "helicopter", "es": "helicóptero", "icon": "🚁", "cat": "Transporte" },
-    { "en": "traffic jam", "es": "embotellamiento / atasco", "icon": "🚦", "cat": "Transporte" },
-
-    { "en": "energy", "es": "energía", "icon": "⚡", "cat": "Energía" },
-    { "en": "wind energy", "es": "energía eólica (del viento)", "icon": "🌬️", "cat": "Energía" },
-    { "en": "wind turbine", "es": "turbina eólica / aerogenerador", "icon": "🎐", "cat": "Energía" },
-    { "en": "wind farm", "es": "parque eólico", "icon": "🌾", "cat": "Energía" },
-    { "en": "blade", "es": "aspa (de la turbina)", "icon": "🗡️", "cat": "Energía" },
-    { "en": "electricity", "es": "electricidad", "icon": "💡", "cat": "Energía" },
-    { "en": "power plant", "es": "planta de energía / central eléctrica", "icon": "🏭", "cat": "Energía" },
-    { "en": "solar energy", "es": "energía solar", "icon": "🌞", "cat": "Energía" },
-    { "en": "solar panel", "es": "panel solar", "icon": "☀️", "cat": "Energía" },
-    { "en": "solar farm", "es": "parque solar", "icon": "🌻", "cat": "Energía" },
-
-    { "en": "a few", "es": "unos pocos", "icon": "🤏", "cat": "Gramática" },
-    { "en": "a little", "es": "un poco", "icon": "💧", "cat": "Gramática" },
-    { "en": "a lot of", "es": "mucho / un montón de", "icon": "📦", "cat": "Gramática" },
-    { "en": "lots of", "es": "muchos / muchísimos", "icon": "📚", "cat": "Gramática" },
-
-    { "en": "town", "es": "pueblo / ciudad pequeña", "icon": "🏘️", "cat": "Lugares" },
-    { "en": "state", "es": "estado (región)", "icon": "🗺️", "cat": "Lugares" },
-    { "en": "grocery store", "es": "supermercado", "icon": "🛒", "cat": "Lugares" }
+    {
+      "en": "balance",
+      "es": "balanza",
+      "icon": "⚖️",
+      "cat": "ciencia"
+    },
+    {
+      "en": "clay",
+      "es": "arcilla",
+      "icon": "🧱",
+      "cat": "materiales"
+    },
+    {
+      "en": "colourful",
+      "es": "colorido",
+      "icon": "🎨",
+      "cat": "adjetivos"
+    },
+    {
+      "en": "compare",
+      "es": "comparar",
+      "icon": "🔍",
+      "cat": "verbos"
+    },
+    {
+      "en": "cutlery",
+      "es": "cubiertos",
+      "icon": "🍴",
+      "cat": "utensilios"
+    },
+    {
+      "en": "differences",
+      "es": "diferencias",
+      "icon": "≠",
+      "cat": "conceptos"
+    },
+    {
+      "en": "lever balance",
+      "es": "balanza de palanca",
+      "icon": "⚖️",
+      "cat": "herramientas"
+    },
+    {
+      "en": "mass",
+      "es": "masa",
+      "icon": "⚖️",
+      "cat": "ciencia"
+    },
+    {
+      "en": "materials",
+      "es": "materiales",
+      "icon": "📦",
+      "cat": "objetos"
+    },
+    {
+      "en": "properties",
+      "es": "propiedades",
+      "icon": "🏷️",
+      "cat": "conceptos"
+    },
+    {
+      "en": "sap",
+      "es": "savia",
+      "icon": "💧",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "similarities",
+      "es": "similitudes",
+      "icon": "=",
+      "cat": "conceptos"
+    },
+    {
+      "en": "utensils",
+      "es": "utensilios",
+      "icon": "🍳",
+      "cat": "objetos"
+    },
+    {
+      "en": "variety",
+      "es": "variedad",
+      "icon": "🔀",
+      "cat": "conceptos"
+    },
+    {
+      "en": "wood",
+      "es": "madera",
+      "icon": "🪵",
+      "cat": "materiales"
+    },
+    {
+      "en": "paper",
+      "es": "papel",
+      "icon": "📄",
+      "cat": "materiales"
+    },
+    {
+      "en": "rubber",
+      "es": "goma",
+      "icon": "🧼",
+      "cat": "materiales"
+    },
+    {
+      "en": "metals",
+      "es": "metales",
+      "icon": "🔩",
+      "cat": "materiales"
+    },
+    {
+      "en": "glass",
+      "es": "vidrio",
+      "icon": "🥛",
+      "cat": "materiales"
+    },
+    {
+      "en": "ceramic",
+      "es": "cerámica",
+      "icon": "🏺",
+      "cat": "materiales"
+    },
+    {
+      "en": "size",
+      "es": "tamaño",
+      "icon": "📏",
+      "cat": "propiedades"
+    },
+    {
+      "en": "shape",
+      "es": "forma",
+      "icon": "🔺",
+      "cat": "propiedades"
+    },
+    {
+      "en": "colour",
+      "es": "color",
+      "icon": "🎨",
+      "cat": "propiedades"
+    },
+    {
+      "en": "small",
+      "es": "pequeño",
+      "icon": "🤏",
+      "cat": "tamaño"
+    },
+    {
+      "en": "big",
+      "es": "grande",
+      "icon": "🐘",
+      "cat": "tamaño"
+    },
+    {
+      "en": "short",
+      "es": "corto",
+      "icon": "➖",
+      "cat": "tamaño"
+    },
+    {
+      "en": "long",
+      "es": "largo",
+      "icon": "〰️",
+      "cat": "tamaño"
+    },
+    {
+      "en": "stationery",
+      "es": "material de papelería",
+      "icon": "✏️",
+      "cat": "objetos"
+    },
+    {
+      "en": "tree",
+      "es": "árbol",
+      "icon": "🌳",
+      "cat": "naturaleza"
+    },
+    {
+      "en": "furniture",
+      "es": "muebles",
+      "icon": "🪑",
+      "cat": "objetos"
+    },
+    {
+      "en": "toy",
+      "es": "juguete",
+      "icon": "🧸",
+      "cat": "objetos"
+    },
+    {
+      "en": "chair",
+      "es": "silla",
+      "icon": "🪑",
+      "cat": "objetos"
+    },
+    {
+      "en": "ball",
+      "es": "pelota",
+      "icon": "⚽",
+      "cat": "objetos"
+    },
+    {
+      "en": "plate",
+      "es": "plato",
+      "icon": "🍽️",
+      "cat": "objetos"
+    },
+    {
+      "en": "circular",
+      "es": "circular",
+      "icon": "⭕",
+      "cat": "formas"
+    },
+    {
+      "en": "yellow",
+      "es": "amarillo",
+      "icon": "💛",
+      "cat": "colores"
+    },
+    {
+      "en": "rectangular",
+      "es": "rectangular",
+      "icon": "🔲",
+      "cat": "formas"
+    },
+    {
+      "en": "triangular",
+      "es": "triangular",
+      "icon": "🔺",
+      "cat": "formas"
+    },
+    {
+      "en": "square",
+      "es": "cuadrado",
+      "icon": "⬛",
+      "cat": "formas"
+    },
+    {
+      "en": "irregular",
+      "es": "irregular",
+      "icon": "🪨",
+      "cat": "formas"
+    },
+    {
+      "en": "factory",
+      "es": "fábrica",
+      "icon": "🏭",
+      "cat": "lugares"
+    },
+    {
+      "en": "book",
+      "es": "libro",
+      "icon": "📖",
+      "cat": "objetos"
+    },
+    {
+      "en": "newspaper",
+      "es": "periódico",
+      "icon": "📰",
+      "cat": "objetos"
+    },
+    {
+      "en": "cardboard box",
+      "es": "caja de cartón",
+      "icon": "📦",
+      "cat": "objetos"
+    },
+    {
+      "en": "roll of paper",
+      "es": "rollo de papel",
+      "icon": "📜",
+      "cat": "objetos"
+    },
+    {
+      "en": "writing pad",
+      "es": "bloc de notas",
+      "icon": "🗒️",
+      "cat": "objetos"
+    },
+    {
+      "en": "tissue paper",
+      "es": "papel de seda",
+      "icon": "🧻",
+      "cat": "objetos"
+    },
+    {
+      "en": "rubber band",
+      "es": "goma elástica",
+      "icon": "➰",
+      "cat": "objeto"
+    },
+    {
+      "en": "rubber toy",
+      "es": "juguete de goma",
+      "icon": "🦆",
+      "cat": "juguete"
+    },
+    {
+      "en": "hose",
+      "es": "manguera",
+      "icon": "🐍",
+      "cat": "objeto"
+    },
+    {
+      "en": "tyre",
+      "es": "neumático",
+      "icon": "🛞",
+      "cat": "objeto"
+    },
+    {
+      "en": "gold",
+      "es": "oro",
+      "icon": "🪙",
+      "cat": "materiales"
+    },
+    {
+      "en": "silver",
+      "es": "plata",
+      "icon": "🥈",
+      "cat": "materiales"
+    },
+    {
+      "en": "iron",
+      "es": "hierro",
+      "icon": "⛓️",
+      "cat": "materiales"
+    },
+    {
+      "en": "jewellery",
+      "es": "joyería",
+      "icon": "💍",
+      "cat": "objetos"
+    },
+    {
+      "en": "silverware",
+      "es": "cubiertos",
+      "icon": "🍴",
+      "cat": "objetos"
+    },
+    {
+      "en": "tools",
+      "es": "herramientas",
+      "icon": "🔧",
+      "cat": "objetos"
+    },
+    {
+      "en": "frying pan",
+      "es": "sartén",
+      "icon": "🍳",
+      "cat": "utensilios"
+    },
+    {
+      "en": "sand",
+      "es": "arena",
+      "icon": "🏖️",
+      "cat": "material"
+    },
+    {
+      "en": "bottle",
+      "es": "botella",
+      "icon": "🍾",
+      "cat": "objeto"
+    },
+    {
+      "en": "window pane",
+      "es": "cristal de ventana",
+      "icon": "🪟",
+      "cat": "objeto"
+    },
+    {
+      "en": "vase",
+      "es": "jarrón",
+      "icon": "🏺",
+      "cat": "objeto"
+    },
+    {
+      "en": "drinking glass",
+      "es": "vaso",
+      "icon": "🥛",
+      "cat": "objeto"
+    },
+    {
+      "en": "brick",
+      "es": "ladrillo",
+      "icon": "🧱",
+      "cat": "materiales"
+    },
+    {
+      "en": "pot",
+      "es": "maceta",
+      "icon": "🪴",
+      "cat": "objetos"
+    },
+    {
+      "en": "tile",
+      "es": "teja",
+      "icon": "🏠",
+      "cat": "materiales"
+    },
+    {
+      "en": "false teeth",
+      "es": "dentadura postiza",
+      "icon": "🦷",
+      "cat": "objetos"
+    },
+    {
+      "en": "science",
+      "es": "ciencia",
+      "icon": "🔬",
+      "cat": "asignatura"
+    }
   ]
 }
